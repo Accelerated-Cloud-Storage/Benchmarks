@@ -1,0 +1,70 @@
+(.venv) [ec2-user@ip-10-0-39-49 fuse-mount-test]$ python benchmark.py /mnt/aws-bucket/
+
+Testing writes with 1KB files...
+Testing reads with 1KB files...
+Testing deletes...
+
+Testing writes with 1024KB files...
+Testing reads with 1024KB files...
+Testing deletes...
+
+Testing writes with 10240KB files...
+Testing reads with 10240KB files...
+Testing deletes...
+
+Benchmark Results:
+================================================================================
+
+Results for 1KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 1103.74ms
+  P95 Latency: 1206.24ms
+  Throughput: 0.00 MB/sec
+
+Read:
+  Average Latency: 244.26ms
+  P95 Latency: 369.05ms
+  Throughput: 0.00 MB/sec
+
+Delete:
+  Average Latency: 232.68ms
+  P95 Latency: 272.72ms
+  Throughput: 4.30 ops/sec
+
+Results for 1024KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 1599.55ms
+  P95 Latency: 1855.27ms
+  Throughput: 0.62 MB/sec
+
+Read:
+  Average Latency: 415.94ms
+  P95 Latency: 866.59ms
+  Throughput: 2.40 MB/sec
+
+Delete:
+  Average Latency: 233.30ms
+  P95 Latency: 336.95ms
+  Throughput: 4.29 ops/sec
+
+Results for 10240KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 1860.31ms
+  P95 Latency: 2865.80ms
+  Throughput: 5.31 MB/sec
+
+Read:
+  Average Latency: 855.13ms
+  P95 Latency: 1354.24ms
+  Throughput: 11.69 MB/sec
+
+Delete:
+  Average Latency: 228.53ms
+  P95 Latency: 285.71ms
+  Throughput: 4.38 ops/sec
