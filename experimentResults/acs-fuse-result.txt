@@ -1,0 +1,74 @@
+[ec2-user@ip-10-0-39-49 fuse-mount-test]$ python benchmark.py /mnt/acs-bucket
+
+Testing writes with 1KB files...
+Testing reads with 1KB files...
+Testing deletes...
+
+Testing writes with 1024KB files...
+Testing reads with 1024KB files...
+Testing deletes...
+
+Testing writes with 10240KB files...
+Testing reads with 10240KB files...
+Testing deletes...
+
+Testing writes with 102400KB files...
+Testing reads with 102400KB files...
+Testing deletes...
+
+Benchmark Results:
+================================================================================
+
+Results for 1KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 8.75ms
+  P95 Latency: 10.78ms
+  Throughput: 0.11 MB/sec
+
+Read:
+  Average Latency: 5.18ms
+  P95 Latency: 6.87ms
+  Throughput: 0.19 MB/sec
+
+Delete:
+  Average Latency: 1.64ms
+  P95 Latency: 2.03ms
+  Throughput: 611.21 ops/sec
+
+Results for 1024KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 10.21ms
+  P95 Latency: 13.97ms
+  Throughput: 79.07 MB/sec
+
+Read:
+  Average Latency: 3.77ms
+  P95 Latency: 4.96ms
+  Throughput: 265.53 MB/sec
+
+Delete:
+  Average Latency: 1.76ms
+  P95 Latency: 2.11ms
+  Throughput: 567.07 ops/sec
+
+Results for 10240KB files:
+----------------------------------------
+
+Write:
+  Average Latency: 15.65ms
+  P95 Latency: 19.14ms
+  Throughput: 249.62 MB/sec
+
+Read:
+  Average Latency: 5.28ms
+  P95 Latency: 9.75ms
+  Throughput: 1893.30 MB/sec
+
+Delete:
+  Average Latency: 2.52ms
+  P95 Latency: 5.65ms
+  Throughput: 396.10 ops/sec

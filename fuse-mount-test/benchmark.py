@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# Copyright 2025 Accelerated Cloud Storage Corporation. All Rights Reserved.
 import os
 import time
 import random
@@ -30,7 +30,7 @@ def generate_random_filename() -> str:
 class FUSEBenchmark:
     def __init__(self, mount_path: str):
         self.mount_path = Path(mount_path)
-        self.sizes = [1024, 1024*1024, 10*1024*1024, 100*1024*1024]  # 1KB, 1MB, 10MB, 100MB
+        self.sizes = [1024, 1024*1024, 10*1024*1024]  # 1KB, 1MB, 10MB
         self.batch_size = 50
         self.results: List[TestResult] = []
 

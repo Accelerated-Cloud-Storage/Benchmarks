@@ -1,8 +1,9 @@
 # Benchmarks
 Repository for comparing ACS object storage to other existing solutions. 
 
-The setup process is very similar to the standard SDK 
+The setup process for ACS to the standard SDK. This requires installing both ACS and AWS Go/Python SDKs. 
 
-This requires installing both ACS and AWS Go and Python SDKs
+Please refer to the acs-go and acs-python sdks for more details. 
 
+AWS S3 setup 
 Python
