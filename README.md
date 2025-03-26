@@ -2,6 +2,20 @@
 
 Repository for comparing ACS object storage to other existing solutions.
 
+## Directory Structure
+
+The repository is organized into several test directories:
+
+- `acs-client-test/`: Contains SDK client benchmarks for ACS Object Storage
+  - `golang/`: Go SDK benchmarks
+  - `python/`: Python SDK benchmarks
+- `s3-client-test/`: Contains SDK client benchmarks for AWS S3
+  - `golang/`: Go SDK benchmarks
+  - `python/`: Python SDK benchmarks
+- `fuse-mount-test/`: Contains FUSE filesystem performance tests
+  - `benchmark.py`: Script for running filesystem performance comparisons
+- `experimentResults/`: Directory where benchmark results are stored
+
 ## Prerequisites
 
 This project requires both ACS and AWS Go/Python SDKs. Make sure to configure your ACS and AWS credentials before continuing. Please refer to those repositories if any questions arise.
@@ -86,3 +100,52 @@ Download AWS Mountpoint-S3 FUSE mount: [https://github.com/awslabs/mountpoint-s3
    ```bash
    ls -la /mnt/aws-bucket
    ```
+
+## Running Benchmarks
+
+### SDK Client Benchmarks
+
+1. **ACS Client Tests**
+
+   For Python:
+
+   ```bash
+   cd acs-client-test/python
+   python TEST-FILE.py
+   ```
+
+   For Go:
+
+   ```bash
+   cd acs-client-test/golang
+   go run TEST-FILE.go
+   ```
+
+2. **S3 Client Tests**
+
+   For Python:
+
+   ```bash
+   cd s3-client-test/python
+   python TEST-FILE.py 
+   ```
+
+   For Go:
+
+   ```bash
+   cd s3-client-test/golang
+   go run TEST-FILE.go
+   ```
+
+### FUSE Mount Performance Tests
+
+To run filesystem performance comparisons between mounted ACS and S3 buckets:
+
+```bash
+cd fuse-mount-test
+python benchmark.py YOUR-MOUNT-POINT
+```
+
+The benchmark results have been saved in the `experimentResults/` directory.
+
+**Note**: Make sure you have mounted both the ACS and S3 buckets as described in the mounting instructions before running the FUSE performance tests.
