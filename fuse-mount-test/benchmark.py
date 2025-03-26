@@ -9,6 +9,12 @@ from typing import List, Dict, Tuple
 from dataclasses import dataclass
 from pathlib import Path
 
+'''
+This is a simple benchmark for a fuse mount. It is a simple benchmark that writes, reads, and deletes files of varying sizes. 
+Make sure to mount the ACS bucket using the acs-fuse tool before running this benchmark. 
+Make sure to mount the AWS S3 bucket using the aws mountpoint tool before running this benchmark. 
+'''
+
 @dataclass
 class TestResult:
     operation: str
