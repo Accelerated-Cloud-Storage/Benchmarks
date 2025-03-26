@@ -4,7 +4,7 @@ Repository for comparing ACS object storage to other existing solutions.
 
 ## Prerequisites
 
-This project requires both ACS and AWS Go/Python SDKs. Make sure to configure your ACS and AWS credentials before continuing.
+This project requires both ACS and AWS Go/Python SDKs. Make sure to configure your ACS and AWS credentials before continuing. Please refer to those repositories if any questions arise.
 
 ### Setup Instructions
 
@@ -20,7 +20,7 @@ go mod download
 # Create a virtual environment
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt 
 ```
 
 ## Mounting Object Storage Buckets
