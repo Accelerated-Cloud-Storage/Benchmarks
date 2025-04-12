@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	fmt.Println("AWS S3 SDK Benchmark - Test Suite 2")
+	fmt.Println("Tigris S3 SDK Benchmark - Test Suite 2")
 	fmt.Println("===================================")
 
 	// Run large object test
