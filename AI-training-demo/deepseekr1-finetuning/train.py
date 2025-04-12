@@ -23,19 +23,19 @@ def parse_args():
     parser.add_argument(
         "--dataset_name",
         type=str,
-        default="c4",
+        default="pg19",
         help="Name of the dataset from the Hugging Face Hub or a local path."
     )
     parser.add_argument(
         "--dataset_config",
         type=str,
-        default="en",
+        default=None,
         help="Dataset configuration name (if needed)."
     )
     parser.add_argument(
         "--output_dir",
         type=str,
-        default="./deepseek-qwen2-c4-finetuned",
+        default="./deepseek-qwen2-pg19-finetuned",
         help="Where to store the final model."
     )
 
@@ -52,8 +52,8 @@ def parse_args():
     
 
     # Misc
-    parser.add_argument("--block_size", type=int, default=2048, help="Block size for grouping text.")
-    parser.add_argument("--max_train_samples", type=int, default=10000, help="For quick debugging, limit train samples.")
+    parser.add_argument("--block_size", type=int, default=4096, help="Block size for grouping text.")
+    parser.add_argument("--max_train_samples", type=int, default=50000, help="For quick debugging, limit train samples.")
     parser.add_argument("--report_to", type=str, default="none", help="Reporting integration: 'none', 'wandb', etc.")
     parser.add_argument(
         "--cache_dir",
