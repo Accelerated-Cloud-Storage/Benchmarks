@@ -1,0 +1,220 @@
+AWS S3 SDK Benchmark - Test Suite 2
+===================================
+
+===== LARGE OBJECT TEST =====
+
+Creating bucket: large-object-test-1744422082134661286
+
+Generating 10.00GB of random data...
+
+Uploading large object using multipart upload...
+Uploaded part 1 (size: 100.00 MB)
+Uploaded part 2 (size: 100.00 MB)
+Uploaded part 3 (size: 100.00 MB)
+Uploaded part 4 (size: 100.00 MB)
+Uploaded part 5 (size: 100.00 MB)
+Uploaded part 6 (size: 100.00 MB)
+Uploaded part 7 (size: 100.00 MB)
+Uploaded part 8 (size: 100.00 MB)
+Uploaded part 9 (size: 100.00 MB)
+Uploaded part 10 (size: 100.00 MB)
+Uploaded part 11 (size: 100.00 MB)
+Uploaded part 12 (size: 100.00 MB)
+Uploaded part 13 (size: 100.00 MB)
+Uploaded part 14 (size: 100.00 MB)
+Uploaded part 15 (size: 100.00 MB)
+Uploaded part 16 (size: 100.00 MB)
+Uploaded part 17 (size: 100.00 MB)
+Uploaded part 18 (size: 100.00 MB)
+Uploaded part 19 (size: 100.00 MB)
+Uploaded part 20 (size: 100.00 MB)
+Uploaded part 21 (size: 100.00 MB)
+Uploaded part 22 (size: 100.00 MB)
+Uploaded part 23 (size: 100.00 MB)
+Uploaded part 24 (size: 100.00 MB)
+Uploaded part 25 (size: 100.00 MB)
+Uploaded part 26 (size: 100.00 MB)
+Uploaded part 27 (size: 100.00 MB)
+Uploaded part 28 (size: 100.00 MB)
+Uploaded part 29 (size: 100.00 MB)
+Uploaded part 30 (size: 100.00 MB)
+Uploaded part 31 (size: 100.00 MB)
+Uploaded part 32 (size: 100.00 MB)
+Uploaded part 33 (size: 100.00 MB)
+Uploaded part 34 (size: 100.00 MB)
+Uploaded part 35 (size: 100.00 MB)
+Uploaded part 36 (size: 100.00 MB)
+Uploaded part 37 (size: 100.00 MB)
+Uploaded part 38 (size: 100.00 MB)
+Uploaded part 39 (size: 100.00 MB)
+Uploaded part 40 (size: 100.00 MB)
+Uploaded part 41 (size: 100.00 MB)
+Uploaded part 42 (size: 100.00 MB)
+Uploaded part 43 (size: 100.00 MB)
+Uploaded part 44 (size: 100.00 MB)
+Uploaded part 45 (size: 100.00 MB)
+Uploaded part 46 (size: 100.00 MB)
+Uploaded part 47 (size: 100.00 MB)
+Uploaded part 48 (size: 100.00 MB)
+Uploaded part 49 (size: 100.00 MB)
+Uploaded part 50 (size: 100.00 MB)
+Uploaded part 51 (size: 100.00 MB)
+Uploaded part 52 (size: 100.00 MB)
+Uploaded part 53 (size: 100.00 MB)
+Uploaded part 54 (size: 100.00 MB)
+Uploaded part 55 (size: 100.00 MB)
+Uploaded part 56 (size: 100.00 MB)
+Uploaded part 57 (size: 100.00 MB)
+Uploaded part 58 (size: 100.00 MB)
+Uploaded part 59 (size: 100.00 MB)
+Uploaded part 60 (size: 100.00 MB)
+Uploaded part 61 (size: 100.00 MB)
+Uploaded part 62 (size: 100.00 MB)
+Uploaded part 63 (size: 100.00 MB)
+Uploaded part 64 (size: 100.00 MB)
+Uploaded part 65 (size: 100.00 MB)
+Uploaded part 66 (size: 100.00 MB)
+Uploaded part 67 (size: 100.00 MB)
+Uploaded part 68 (size: 100.00 MB)
+Uploaded part 69 (size: 100.00 MB)
+Uploaded part 70 (size: 100.00 MB)
+Uploaded part 71 (size: 100.00 MB)
+Uploaded part 72 (size: 100.00 MB)
+Uploaded part 73 (size: 100.00 MB)
+Uploaded part 74 (size: 100.00 MB)
+Uploaded part 75 (size: 100.00 MB)
+Uploaded part 76 (size: 100.00 MB)
+Uploaded part 77 (size: 100.00 MB)
+Uploaded part 78 (size: 100.00 MB)
+Uploaded part 79 (size: 100.00 MB)
+Uploaded part 80 (size: 100.00 MB)
+Uploaded part 81 (size: 100.00 MB)
+Uploaded part 82 (size: 100.00 MB)
+Uploaded part 83 (size: 100.00 MB)
+Uploaded part 84 (size: 100.00 MB)
+Uploaded part 85 (size: 100.00 MB)
+Uploaded part 86 (size: 100.00 MB)
+Uploaded part 87 (size: 100.00 MB)
+Uploaded part 88 (size: 100.00 MB)
+Uploaded part 89 (size: 100.00 MB)
+Uploaded part 90 (size: 100.00 MB)
+Uploaded part 91 (size: 100.00 MB)
+Uploaded part 92 (size: 100.00 MB)
+Uploaded part 93 (size: 100.00 MB)
+Uploaded part 94 (size: 100.00 MB)
+Uploaded part 95 (size: 100.00 MB)
+Uploaded part 96 (size: 100.00 MB)
+Uploaded part 97 (size: 100.00 MB)
+Uploaded part 98 (size: 100.00 MB)
+Uploaded part 99 (size: 100.00 MB)
+Uploaded part 100 (size: 100.00 MB)
+Uploaded part 101 (size: 100.00 MB)
+Uploaded part 102 (size: 100.00 MB)
+Uploaded part 103 (size: 40.00 MB)
+
+Large Object Upload (Multipart) Metrics:
+Min Latency: 202377.50 ms
+Average Latency: 202377.50 ms
+P90 Latency: 202377.50 ms
+P95 Latency: 202377.50 ms
+P99 Latency: 202377.50 ms
+Throughput: 0.00 ops/sec
+Throughput: 0.049413 GB/sec
+
+Reading large object...
+
+Large Object Download Metrics:
+Min Latency: 119697.95 ms
+Average Latency: 119697.95 ms
+P90 Latency: 119697.95 ms
+P95 Latency: 119697.95 ms
+P99 Latency: 119697.95 ms
+Throughput: 0.01 ops/sec
+Throughput: 0.083544 GB/sec
+
+Verifying data integrity...
+Data integrity verified successfully!
+
+Deleting large object...
+
+Large Object Deletion Metrics:
+Min Latency: 66.34 ms
+Average Latency: 66.34 ms
+P90 Latency: 66.34 ms
+P95 Latency: 66.34 ms
+P99 Latency: 66.34 ms
+Throughput: 15.07 ops/sec
+Throughput: 150.728354 GB/sec
+
+Cleaning up bucket: large-object-test-1744422082134661286
+
+AWS S3 SDK Benchmark - Test Suite 2
+===================================
+
+===== LIST OPERATIONS TEST =====
+
+Creating 100 buckets...
+
+Bucket Creation Metrics:
+Min Latency: 79.74 ms
+Average Latency: 136.99 ms
+P90 Latency: 174.82 ms
+P95 Latency: 212.09 ms
+P99 Latency: 537.14 ms
+Throughput: 7.30 ops/sec
+
+Listing all buckets...
+
+Bucket Listing Metrics:
+Min Latency: 31.61 ms
+Average Latency: 45.26 ms
+P90 Latency: 70.24 ms
+P95 Latency: 70.24 ms
+P99 Latency: 70.24 ms
+Throughput: 22.09 ops/sec
+
+Deleting 100 buckets...
+
+Bucket Deletion Metrics:
+Min Latency: 89.92 ms
+Average Latency: 180.69 ms
+P90 Latency: 303.29 ms
+P95 Latency: 407.95 ms
+P99 Latency: 992.72 ms
+Throughput: 5.53 ops/sec
+
+Creating bucket for object list test: object-list-test-1744422657460839364
+
+Creating 1000 objects of size 1 byte...
+
+Object Creation Metrics:
+Min Latency: 33.88 ms
+Average Latency: 99.68 ms
+P90 Latency: 157.99 ms
+P95 Latency: 247.35 ms
+P99 Latency: 538.70 ms
+Throughput: 10.03 ops/sec
+Throughput: 0.000000 GB/sec
+
+Listing all objects...
+
+Object Listing Metrics:
+Min Latency: 72.89 ms
+Average Latency: 128.03 ms
+P90 Latency: 283.43 ms
+P95 Latency: 283.43 ms
+P99 Latency: 283.43 ms
+Throughput: 7.81 ops/sec
+
+Deleting 1000 objects...
+
+Object Deletion Metrics:
+Min Latency: 39.55 ms
+Average Latency: 129.46 ms
+P90 Latency: 197.61 ms
+P95 Latency: 316.53 ms
+P99 Latency: 1207.83 ms
+Throughput: 7.72 ops/sec
+Throughput: 0.000000 GB/sec
+
+Cleaning up bucket: object-list-test-1744422657460839364
