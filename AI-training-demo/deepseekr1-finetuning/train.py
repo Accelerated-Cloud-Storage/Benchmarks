@@ -23,13 +23,13 @@ def parse_args():
     parser.add_argument(
         "--dataset_name",
         type=str,
-        default="pg19",
+        default="deepmind/pg19", #wikitext
         help="Name of the dataset from the Hugging Face Hub or a local path."
     )
     parser.add_argument(
         "--dataset_config",
         type=str,
-        default=None,
+        default=None, #wikitext-2-v1 
         help="Dataset configuration name (if needed)."
     )
     parser.add_argument(
@@ -52,7 +52,7 @@ def parse_args():
     
 
     # Misc
-    parser.add_argument("--block_size", type=int, default=4096, help="Block size for grouping text.")
+    parser.add_argument("--block_size", type=int, default=1024, help="Block size for grouping text.")
     parser.add_argument("--max_train_samples", type=int, default=50000, help="For quick debugging, limit train samples.")
     parser.add_argument("--report_to", type=str, default="none", help="Reporting integration: 'none', 'wandb', etc.")
     parser.add_argument(
