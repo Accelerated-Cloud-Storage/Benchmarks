@@ -1,5 +1,6 @@
 import argparse
 import torch
+import time
 from datasets import load_dataset
 from transformers import (
     AutoTokenizer,
@@ -85,21 +86,31 @@ def group_texts(examples, block_size):
 
 
 def main():
+    start_time = time.time()
     args = parse_args()
+    print("\n=== Starting Training Pipeline ===")
 
     # 1. Load tokenizer and model
+    print("\nStep 1: Loading tokenizer and model...")
+    step_start = time.time()
     tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", cache_dir=args.cache_dir)
     model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", cache_dir=args.cache_dir)
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 2. Load dataset
+    print("\nStep 2: Loading dataset...")
+    step_start = time.time()
     raw_datasets = load_dataset(
         args.dataset_name,
         args.dataset_config,
         cache_dir=args.cache_dir,
         trust_remote_code=True
     )
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 3. Tokenize
+    print("\nStep 3: Tokenizing dataset...")
+    step_start = time.time()
     def tokenize_function(examples):
         return tokenizer(examples["text"])
 
@@ -113,19 +124,28 @@ def main():
     # Optional: limit training set size for debugging
     if args.max_train_samples is not None:
         tokenized_datasets["train"] = tokenized_datasets["train"].select(range(args.max_train_samples))
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 4. Group text into blocks for causal LM
+    print("\nStep 4: Grouping text into blocks...")
+    step_start = time.time()
     lm_datasets = tokenized_datasets.map(
         lambda examples: group_texts(examples, args.block_size),
         batched=True,
     )
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
-    # 5. Data collator (creates labels from input_ids for causal LM)
+    # 5. Data collator setup
+    print("\nStep 5: Setting up data collator...")
+    step_start = time.time()
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, mlm=False
     )
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
-    # 6. Set up training arguments
+    # 6. Training setup
+    print("\nStep 6: Setting up training arguments...")
+    step_start = time.time()
     training_args = TrainingArguments(
         output_dir=args.output_dir,
         overwrite_output_dir=True,
@@ -133,17 +153,16 @@ def main():
         per_device_train_batch_size=args.per_device_train_batch_size,
         per_device_eval_batch_size=args.per_device_eval_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
-        eval_steps=args.logging_steps,  # Evaluate at the same frequency as logging
+        eval_steps=args.logging_steps,
         save_steps=args.save_steps,
         logging_steps=args.logging_steps,
-        save_total_limit=3,  # Only keep the last 3 checkpoints
+        save_total_limit=3,
         fp16=args.fp16 and torch.cuda.is_available(),
         report_to=args.report_to,
         learning_rate=args.learning_rate,
-        do_eval=True,  # Enable evaluation
+        do_eval=True,
     )
 
-    # 7. Initialize Trainer
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -152,13 +171,26 @@ def main():
         tokenizer=tokenizer,
         data_collator=data_collator,
     )
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
-    # 8. Train
+    # 7. Training
+    print("\nStep 7: Starting training...")
+    step_start = time.time()
     trainer.train()
+    training_time = time.time() - step_start
+    print(f"Training time: {training_time:.2f} seconds")
 
-    # 9. Save final model
+    # 8. Save final model
+    print("\nStep 8: Saving final model...")
+    step_start = time.time()
     trainer.save_model(args.output_dir)
     tokenizer.save_pretrained(args.output_dir)
+    print(f"Time taken: {time.time() - step_start:.2f} seconds")
+
+    total_time = time.time() - start_time
+    print(f"\n=== Training Pipeline Completed ===")
+    print(f"Total time taken: {total_time:.2f} seconds ({total_time/3600:.2f} hours)")
+    print(f"Training time: {training_time:.2f} seconds ({training_time/3600:.2f} hours)")
 
 
 if __name__ == "__main__":
