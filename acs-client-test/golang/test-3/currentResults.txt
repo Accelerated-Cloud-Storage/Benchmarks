@@ -1,0 +1,98 @@
+[ec2-user@ip-10-0-39-49 test-3]$ go run concurrent-throughput-test.go 
+ACS_PROFILE environment variable not set, using 'default' profile.
+Failed to create client: authentication failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded while waiting for connections to become ready
+exit status 1
+[ec2-user@ip-10-0-39-49 test-3]$ go run concurrent-throughput-test.go 
+ACS_PROFILE environment variable not set, using 'default' profile.
+Failed to create client: authentication failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded while waiting for connections to become ready
+exit status 1
+[ec2-user@ip-10-0-39-49 test-3]$ go run concurrent-throughput-test.go 
+ACS_PROFILE environment variable not set, using 'default' profile.
+Creating bucket: throughput-test-1744750050917145418
+
+--- THROUGHPUT BENCHMARK RESULTS ---
+Operation       Object Size     Throughput (ops/sec)    Throughput (GB/sec)
+--------------------------------------------------------------------------------------------------------
+
+Starting concurrent write operations for varying object sizes...
+Writing 50 objects of size 1048576 bytes with 32 concurrent workers
+PUT     1 MB    477.37                  0.4662
+Writing 50 objects of size 10485760 bytes with 32 concurrent workers
+PUT     10 MB   53.84                   0.5258
+Writing 50 objects of size 104857600 bytes with 32 concurrent workers
+PUT     100 MB  5.34                    0.5214
+Writing 50 objects of size 524288000 bytes with 32 concurrent workers
+PUT     500 MB  1.01                    0.4950
+
+Starting concurrent read operations for varying object sizes...
+Reading 50 objects of size 1048576 bytes with 32 concurrent workers
+GET     1 MB    434.27                  0.4241
+Reading 50 objects of size 10485760 bytes with 32 concurrent workers
+GET     10 MB   54.23                   0.5296
+Reading 50 objects of size 104857600 bytes with 32 concurrent workers
+GET     100 MB  5.33                    0.5201
+Reading 50 objects of size 524288000 bytes with 32 concurrent workers
+GET     500 MB  1.02                    0.4978
+
+Starting concurrent delete operations...
+Deleting 50 objects of size 1048576 bytes with 32 concurrent workers
+DELETE  1 MB    8382.51                 8.1860
+Deleting 50 objects of size 10485760 bytes with 32 concurrent workers
+DELETE  10 MB   2427.48                 23.7058
+Deleting 50 objects of size 104857600 bytes with 32 concurrent workers
+DELETE  100 MB  293.79                  28.6903
+Deleting 50 objects of size 524288000 bytes with 32 concurrent workers
+DELETE  500 MB  60.49                   29.5365
+--------------------------------------------------------------------------------------------------------
+Cleaning up bucket: throughput-test-1744750050917145418
+[ec2-user@ip-10-0-39-49 test-3]$ cd ..
+[ec2-user@ip-10-0-39-49 golang]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+[ec2-user@ip-10-0-39-49 golang]$ git pull
+Already up to date.
+[ec2-user@ip-10-0-39-49 golang]$ git checkout -b throughput_test
+Switched to a new branch 'throughput_test'
+[ec2-user@ip-10-0-39-49 golang]$ ls
+test-1  test-2  test-3
+[ec2-user@ip-10-0-39-49 golang]$ cd test-3/
+[ec2-user@ip-10-0-39-49 test-3]$ go run throughput-test.go 
+ACS_PROFILE environment variable not set, using 'default' profile.
+Creating bucket: throughput-test-1744756442750547504
+
+--- THROUGHPUT BENCHMARK RESULTS ---
+Operation       Object Size     Throughput (ops/sec)    Throughput (GB/sec)
+--------------------------------------------------------------------------------------------------------
+
+Starting concurrent write operations for varying object sizes...
+Writing 50 objects of size 1048576 bytes with 32 concurrent workers
+PUT     1 MB    452.72                  0.4421
+Writing 50 objects of size 10485760 bytes with 32 concurrent workers
+PUT     10 MB   53.01                   0.5177
+Writing 50 objects of size 104857600 bytes with 32 concurrent workers
+PUT     100 MB  5.02                    0.4901
+Writing 50 objects of size 524288000 bytes with 32 concurrent workers
+PUT     500 MB  0.95                    0.4643
+
+Starting concurrent read operations for varying object sizes...
+Reading 50 objects of size 1048576 bytes with 32 concurrent workers
+GET     1 MB    396.08                  0.3868
+Reading 50 objects of size 10485760 bytes with 32 concurrent workers
+GET     10 MB   54.62                   0.5334
+Reading 50 objects of size 104857600 bytes with 32 concurrent workers
+GET     100 MB  5.29                    0.5170
+Reading 50 objects of size 524288000 bytes with 32 concurrent workers
+GET     500 MB  1.00                    0.4870
+
+Starting concurrent delete operations...
+Deleting 50 objects of size 1048576 bytes with 32 concurrent workers
+DELETE  1 MB    8523.84                 8.3241
+Deleting 50 objects of size 10485760 bytes with 32 concurrent workers
+DELETE  10 MB   2437.91                 23.8077
+Deleting 50 objects of size 104857600 bytes with 32 concurrent workers
+DELETE  100 MB  292.48                  28.5626
+Deleting 50 objects of size 524288000 bytes with 32 concurrent workers
+DELETE  500 MB  60.54                   29.5591
+--------------------------------------------------------------------------------------------------------
+Cleaning up bucket: throughput-test-1744756442750547504
+[ec2-user@ip-10-0-39-49 test-3]$ 
