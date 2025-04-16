@@ -1,0 +1,53 @@
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py --output_dir /mnt/acs-bucket/hfz --cache_dir /mnt/acs-bucket/hfz --dataset_name wikitext --dataset_config wikitext-2-v1 --max_train_samples 1000
+
+=== Starting Training Pipeline ===
+
+Step 1: Loading tokenizer and model...
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+generation_config.json: 100%|█████████████████████████████████████████████████████████████| 181/181 [00:00<00:00, 44.7kB/s]
+/home/ec2-user/.venv/lib64/python3.9/site-packages/huggingface_hub/file_download.py:144: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in /mnt/acs-bucket/hfz/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+  warnings.warn(message)
+Time taken: 187.92 seconds
+
+Step 2: Loading dataset...
+Generating test split: 100%|████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 132621.16 examples/s]
+Generating train split: 100%|█████████████████████████████████████████████| 36718/36718 [00:00<00:00, 227578.14 examples/s]
+Generating validation split: 100%|██████████████████████████████████████████| 3760/3760 [00:00<00:00, 120178.80 examples/s]
+Time taken: 2.15 seconds
+
+Step 3: Tokenizing dataset...
+Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f92926793a0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Map: 100%|███████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 14532.20 examples/s]
+Map: 100%|█████████████████████████████████████████████████████████████████| 36718/36718 [00:02<00:00, 17639.19 examples/s]
+Map: 100%|███████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 14746.10 examples/s]
+Time taken: 2.66 seconds
+
+Step 4: Grouping text into blocks...
+Map: 100%|████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 6043.34 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 5051.55 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 5794.11 examples/s]
+Time taken: 1.59 seconds
+
+Step 5: Setting up data collator...
+Time taken: 0.00 seconds
+
+Step 6: Setting up training arguments...
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:166: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+Time taken: 1.91 seconds
+
+Step 7: Starting training...
+{'train_runtime': 106.5016, 'train_samples_per_second': 0.61, 'train_steps_per_second': 0.075, 'train_loss': 3.1208393573760986, 'epoch': 0.97}
+100%|████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:46<00:00, 13.31s/it]
+Training time: 106.64 seconds
+
+Step 8: Saving final model...
+Time taken: 30.91 seconds
+
+=== Training Pipeline Completed ===
+Total time taken: 333.77 seconds (0.09 hours)
+Training time: 106.64 seconds (0.03 hours)
