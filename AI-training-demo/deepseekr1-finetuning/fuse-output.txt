@@ -1,32 +1,27 @@
-(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py --output_dir /mnt/acs-bucket/hfz --cache_dir /mnt/acs-bucket/hfz --dataset_name wikitext --dataset_config wikitext-2-v1 --max_train_samples 1000
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py --output_dir /mnt/acs-bucket/hfy7 --cache_dir /mnt/acs-bucket/hfy7 --dataset_name wikitext --dataset_config wikitext-2-v1 --max_train_samples 1000
 
 === Starting Training Pipeline ===
 
 Step 1: Loading tokenizer and model...
 Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
-generation_config.json: 100%|█████████████████████████████████████████████████████████████| 181/181 [00:00<00:00, 44.7kB/s]
-/home/ec2-user/.venv/lib64/python3.9/site-packages/huggingface_hub/file_download.py:144: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in /mnt/acs-bucket/hfz/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
-  warnings.warn(message)
-Time taken: 187.92 seconds
+Time taken: 170.86 seconds
 
 Step 2: Loading dataset...
-Generating test split: 100%|████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 132621.16 examples/s]
-Generating train split: 100%|█████████████████████████████████████████████| 36718/36718 [00:00<00:00, 227578.14 examples/s]
-Generating validation split: 100%|██████████████████████████████████████████| 3760/3760 [00:00<00:00, 120178.80 examples/s]
-Time taken: 2.15 seconds
+Disabling pyarrow memory mapping due to FUSE potentially...
+Time taken: 1.22 seconds
 
 Step 3: Tokenizing dataset...
-Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f92926793a0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
-Map: 100%|███████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 14532.20 examples/s]
-Map: 100%|█████████████████████████████████████████████████████████████████| 36718/36718 [00:02<00:00, 17639.19 examples/s]
-Map: 100%|███████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 14746.10 examples/s]
-Time taken: 2.66 seconds
+Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f39c7da5430> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Map: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 14798.47 examples/s]
+Map: 100%|███████████████████████████████████████████████████████████████████████████████████████| 36718/36718 [00:02<00:00, 17158.33 examples/s]
+Map: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 14966.34 examples/s]
+Time taken: 2.70 seconds
 
 Step 4: Grouping text into blocks...
-Map: 100%|████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 6043.34 examples/s]
-Map: 100%|████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 5051.55 examples/s]
-Map: 100%|████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 5794.11 examples/s]
-Time taken: 1.59 seconds
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 5822.30 examples/s]
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 4778.45 examples/s]
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 5665.37 examples/s]
+Time taken: 1.65 seconds
 
 Step 5: Setting up data collator...
 Time taken: 0.00 seconds
@@ -36,18 +31,18 @@ huggingface/tokenizers: The current process just got forked, after parallelism h
 To disable this warning, you can either:
         - Avoid using `tokenizers` before the fork if possible
         - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:166: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:169: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
   trainer = Trainer(
-Time taken: 1.91 seconds
+Time taken: 1.83 seconds
 
 Step 7: Starting training...
-{'train_runtime': 106.5016, 'train_samples_per_second': 0.61, 'train_steps_per_second': 0.075, 'train_loss': 3.1208393573760986, 'epoch': 0.97}
-100%|████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:46<00:00, 13.31s/it]
-Training time: 106.64 seconds
+{'train_runtime': 157.5507, 'train_samples_per_second': 0.413, 'train_steps_per_second': 0.051, 'train_loss': 3.1208393573760986, 'epoch': 0.97} 
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [02:37<00:00, 19.69s/it]
+Training time: 157.69 seconds
 
 Step 8: Saving final model...
-Time taken: 30.91 seconds
+Time taken: 33.46 seconds
 
 === Training Pipeline Completed ===
-Total time taken: 333.77 seconds (0.09 hours)
-Training time: 106.64 seconds (0.03 hours)
+Total time taken: 369.41 seconds (0.10 hours)
+Training time: 157.69 seconds (0.04 hours)

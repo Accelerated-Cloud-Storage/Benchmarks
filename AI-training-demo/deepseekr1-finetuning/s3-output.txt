@@ -1,0 +1,76 @@
+[ec2-user@ip-172-31-25-0 ~]$ ls
+BUILD_FROM_SOURCE_PACKAGES_LICENCES  Nvidia_Cloud_EULA.pdf                   acs-sdk-go      mnt           tools
+Benchmarks                           OSSNvidiaDriver_v570.86.15_license.txt  acs-sdk-python  mount-s3.rpm
+LINUX_PACKAGES_LICENSES              PYTHON_PACKAGES_LICENSES                go              output.txt
+LINUX_PACKAGES_LIST                  THIRD_PARTY_SOURCE_CODE_URLS            localDir        s3fs-fuse
+[ec2-user@ip-172-31-25-0 ~]$ umount ~/mnt/aws-bucket
+umount: /home/ec2-user/mnt/aws-bucket: target is busy.
+[ec2-user@ip-172-31-25-0 ~]$ umount -l ~/mnt/aws-bucket
+[ec2-user@ip-172-31-25-0 ~]$ ls^C
+[ec2-user@ip-172-31-25-0 ~]$ s3fs my-bucket-1744522627046021774 ~/mnt/aws-bucket -o passwd_file=${HOME}/.passwd-s3fs
+[ec2-user@ip-172-31-25-0 ~]$ cd ~/mnt/aws-bucket/
+[ec2-user@ip-172-31-25-0 aws-bucket]$ ls
+my-object
+[ec2-user@ip-172-31-25-0 aws-bucket]$ cd ..
+[ec2-user@ip-172-31-25-0 mnt]$ cd ~
+[ec2-user@ip-172-31-25-0 ~]$ source .venv/bin/activate
+(.venv) [ec2-user@ip-172-31-25-0 ~]$ cd Benchmarks/AI-training-demo/deepseekr1-finetuning/
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py --output_dir ~/mnt/aws-bucket --cache_dir ~/mnt/aw
+s-bucket --dataset_name wikitext --dataset_config wikitext-2-v1 --max_train_samples 1000
+
+=== Starting Training Pipeline ===
+
+Step 1: Loading tokenizer and model...
+tokenizer_config.json: 100%|███████████████████████████████████████████████████████████| 3.07k/3.07k [00:00<00:00, 677kB/s]
+tokenizer.json: 100%|█████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:00<00:00, 50.8MB/s]
+config.json: 100%|█████████████████████████████████████████████████████████████████████████| 679/679 [00:00<00:00, 421kB/s]
+model.safetensors: 100%|███████████████████████████████████████████████████████████████| 3.55G/3.55G [00:10<00:00, 344MB/s]
+Could not set the permissions on the file '/home/ec2-user/mnt/aws-bucket/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.incomplete'. Error: [Errno 5] Input/output error: '/home/ec2-user/mnt/aws-bucket/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.incomplete'.
+Continuing without setting permissions.
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+generation_config.json: 100%|█████████████████████████████████████████████████████████████| 181/181 [00:00<00:00, 43.2kB/s]
+Time taken: 125.10 seconds
+
+Step 2: Loading dataset...
+Generating test split: 100%|█████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 21200.45 examples/s]
+Generating train split: 100%|██████████████████████████████████████████████| 36718/36718 [00:00<00:00, 78969.08 examples/s]
+Generating validation split: 100%|███████████████████████████████████████████| 3760/3760 [00:00<00:00, 16891.14 examples/s]
+Time taken: 5.28 seconds
+
+Step 3: Tokenizing dataset...
+Parameter 'function'=<function main.<locals>.tokenize_function at 0x7fc1f7985820> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Map: 100%|████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 4665.10 examples/s]
+Map: 100%|█████████████████████████████████████████████████████████████████| 36718/36718 [00:03<00:00, 12211.69 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 4194.31 examples/s]
+Time taken: 5.05 seconds
+
+Step 4: Grouping text into blocks...
+Map: 100%|████████████████████████████████████████████████████████████████████| 4358/4358 [00:01<00:00, 3561.10 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 1102.71 examples/s]
+Map: 100%|████████████████████████████████████████████████████████████████████| 3760/3760 [00:01<00:00, 2943.64 examples/s]
+Time taken: 3.61 seconds
+
+Step 5: Setting up data collator...
+Time taken: 0.00 seconds
+
+Step 6: Setting up training arguments...
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:166: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+Time taken: 1.80 seconds
+
+Step 7: Starting training...
+{'train_runtime': 168.2496, 'train_samples_per_second': 0.386, 'train_steps_per_second': 0.048, 'train_loss': 3.120839834213257, 'epoch': 0.97}
+100%|████████████████████████████████████████████████████████████████████████████████████████| 8/8 [02:48<00:00, 21.03s/it]
+Training time: 168.40 seconds
+
+Step 8: Saving final model...
+Time taken: 38.09 seconds
+
+=== Training Pipeline Completed ===
+Total time taken: 347.33 seconds (0.10 hours)
+Training time: 168.40 seconds (0.05 hours)
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ 
