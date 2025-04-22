@@ -1,48 +1,678 @@
-(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py --output_dir /mnt/acs-bucket/hfy7 --cache_dir /mnt/acs-bucket/hfy7 --dataset_name wikitext --dataset_config wikitext-2-v1 --max_train_samples 1000
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py     --output_dir /mnt/acs-bucket/hf10     --cache_dir /mnt/acs-
+bucket/hf10     --dataset_name wikitext     --dataset_config wikitext-2-v1     --max_train_samples 1000 
+2025-04-22 05:04:22,951 - datasets - INFO - PyTorch version 2.6.0 available.
+Detected accelerate version: 1.6.0
+Detected datasets version: 3.5.0
+Detected jinja2 version: 3.1.5
+Detected pandas version: 2.2.3
+Detected psutil version: 7.0.0
+Detected pytest version: 8.3.5
+Detected safetensors version: 0.5.3
+Detected tokenizers version: 0.21.1
+Detected triton version: 3.2.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
 
 === Starting Training Pipeline ===
 
 Step 1: Loading tokenizer and model...
+Request a4486f23-1419-4ef5-8858-2fa452193c39: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:04:24,416 - huggingface_hub.utils._http - DEBUG - Request a4486f23-1419-4ef5-8858-2fa452193c39: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:04:24,416 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-04-22 05:04:24,439 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-04-22 05:04:24,622 - filelock - DEBUG - Attempting to acquire lock 140133818998496 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.lock
+2025-04-22 05:04:24,640 - filelock - DEBUG - Lock 140133818998496 acquired on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.lock
+Downloading 'tokenizer_config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.incomplete'
+2025-04-22 05:04:24,650 - huggingface_hub.file_download - INFO - Downloading 'tokenizer_config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.incomplete'
+Request f7995b90-58df-464f-8740-c580dd3b25b9: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:04:24,652 - huggingface_hub.utils._http - DEBUG - Request f7995b90-58df-464f-8740-c580dd3b25b9: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:04:24,666 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 200 3071
+tokenizer_config.json: 100%|████████████████████████████████████████████████████████████████████████| 3.07k/3.07k [00:00<00:00, 621kB/s]
+Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50
+2025-04-22 05:04:24,685 - huggingface_hub.file_download - INFO - Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50
+/home/ec2-user/.venv/lib64/python3.9/site-packages/huggingface_hub/file_download.py:144: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+  warnings.warn(message)
+Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json
+2025-04-22 05:04:24,768 - huggingface_hub.file_download - INFO - Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/9967ff32d94b21c94dc7e2b3bcbea295a46cde50 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json
+2025-04-22 05:04:24,781 - filelock - DEBUG - Attempting to release lock 140133818998496 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.lock
+2025-04-22 05:04:24,781 - filelock - DEBUG - Lock 140133818998496 released on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/9967ff32d94b21c94dc7e2b3bcbea295a46cde50.lock
+Request af580f86-19a7-4f5a-b034-a301396e6bd0: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.model (authenticated: False)
+2025-04-22 05:04:24,838 - huggingface_hub.utils._http - DEBUG - Request af580f86-19a7-4f5a-b034-a301396e6bd0: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.model (authenticated: False)
+2025-04-22 05:04:24,856 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.model HTTP/1.1" 404 0
+Request 927bc6fc-5151-419c-9f16-b4dad6b3fba3: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json (authenticated: False)
+2025-04-22 05:04:24,953 - huggingface_hub.utils._http - DEBUG - Request 927bc6fc-5151-419c-9f16-b4dad6b3fba3: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json (authenticated: False)
+2025-04-22 05:04:24,964 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json HTTP/1.1" 200 0
+2025-04-22 05:04:24,981 - filelock - DEBUG - Attempting to acquire lock 140133819051168 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/a34650995da6939a945c330eadb0687147ac3ef8.lock
+2025-04-22 05:04:24,997 - filelock - DEBUG - Lock 140133819051168 acquired on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/a34650995da6939a945c330eadb0687147ac3ef8.lock
+Downloading 'tokenizer.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8.incomplete'
+2025-04-22 05:04:25,008 - huggingface_hub.file_download - INFO - Downloading 'tokenizer.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8.incomplete'
+Request 73f97250-d69c-4bb9-9d4f-fe71c6155c7b: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json (authenticated: False)
+2025-04-22 05:04:25,009 - huggingface_hub.utils._http - DEBUG - Request 73f97250-d69c-4bb9-9d4f-fe71c6155c7b: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json (authenticated: False)
+2025-04-22 05:04:25,039 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer.json HTTP/1.1" 200 7031660
+tokenizer.json: 100%|██████████████████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:00<00:00, 33.0MB/s]
+Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8
+2025-04-22 05:04:25,254 - huggingface_hub.file_download - INFO - Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8
+Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer.json
+2025-04-22 05:04:25,315 - huggingface_hub.file_download - INFO - Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/a34650995da6939a945c330eadb0687147ac3ef8 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer.json
+2025-04-22 05:04:25,327 - filelock - DEBUG - Attempting to release lock 140133819051168 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/a34650995da6939a945c330eadb0687147ac3ef8.lock
+2025-04-22 05:04:25,327 - filelock - DEBUG - Lock 140133819051168 released on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/a34650995da6939a945c330eadb0687147ac3ef8.lock
+Request 183e8f44-e11e-49f8-a6f7-a46240a004e4: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/added_tokens.json (authenticated: False)
+2025-04-22 05:04:25,356 - huggingface_hub.utils._http - DEBUG - Request 183e8f44-e11e-49f8-a6f7-a46240a004e4: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/added_tokens.json (authenticated: False)
+2025-04-22 05:04:25,370 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/added_tokens.json HTTP/1.1" 404 0
+Request 8239fd78-9ab1-485f-8b8c-8ff08dc78bde: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/special_tokens_map.json (authenticated: False)
+2025-04-22 05:04:25,412 - huggingface_hub.utils._http - DEBUG - Request 8239fd78-9ab1-485f-8b8c-8ff08dc78bde: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/special_tokens_map.json (authenticated: False)
+2025-04-22 05:04:25,425 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/special_tokens_map.json HTTP/1.1" 404 0
+Request 5c9fd596-535e-4989-be22-d2b856ff0934: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/chat_template.jinja (authenticated: False)
+2025-04-22 05:04:25,469 - huggingface_hub.utils._http - DEBUG - Request 5c9fd596-535e-4989-be22-d2b856ff0934: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/chat_template.jinja (authenticated: False)
+2025-04-22 05:04:25,482 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/chat_template.jinja HTTP/1.1" 404 0
+loading file tokenizer.model from cache at None
+loading file tokenizer.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer.json
+loading file added_tokens.json from cache at None
+loading file special_tokens_map.json from cache at None
+loading file tokenizer_config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json
+loading file chat_template.jinja from cache at None
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Request 0c16cd04-1e58-4911-98ff-f2387938f8cc: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:04:26,573 - huggingface_hub.utils._http - DEBUG - Request 0c16cd04-1e58-4911-98ff-f2387938f8cc: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:04:26,583 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 200 0
+2025-04-22 05:04:26,611 - filelock - DEBUG - Attempting to acquire lock 140133819051552 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/68c044b63c894bc0c3d334a44bed2856d6d6815d.lock
+2025-04-22 05:04:26,624 - filelock - DEBUG - Lock 140133819051552 acquired on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/68c044b63c894bc0c3d334a44bed2856d6d6815d.lock
+Downloading 'config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d.incomplete'
+2025-04-22 05:04:26,637 - huggingface_hub.file_download - INFO - Downloading 'config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d.incomplete'
+Request 23c0bf12-7841-4fa6-b03d-1d3ae8c8f131: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:04:26,638 - huggingface_hub.utils._http - DEBUG - Request 23c0bf12-7841-4fa6-b03d-1d3ae8c8f131: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:04:26,651 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 200 679
+config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████| 679/679 [00:00<00:00, 391kB/s]
+Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d
+2025-04-22 05:04:26,670 - huggingface_hub.file_download - INFO - Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d
+Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json
+2025-04-22 05:04:26,707 - huggingface_hub.file_download - INFO - Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/68c044b63c894bc0c3d334a44bed2856d6d6815d to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json
+2025-04-22 05:04:26,722 - filelock - DEBUG - Attempting to release lock 140133819051552 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/68c044b63c894bc0c3d334a44bed2856d6d6815d.lock
+2025-04-22 05:04:26,722 - filelock - DEBUG - Lock 140133819051552 released on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/68c044b63c894bc0c3d334a44bed2856d6d6815d.lock
+loading configuration file config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json
+Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "hidden_act": "silu",
+  "hidden_size": 1536,
+  "initializer_range": 0.02,
+  "intermediate_size": 8960,
+  "max_position_embeddings": 131072,
+  "max_window_layers": 21,
+  "model_type": "qwen2",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 2,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 10000,
+  "sliding_window": 4096,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.51.2",
+  "use_cache": true,
+  "use_mrope": false,
+  "use_sliding_window": false,
+  "vocab_size": 151936
+}
+
+Request b819c21f-f578-4f5e-8dc9-06289be91053: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors (authenticated: False)
+2025-04-22 05:04:26,800 - huggingface_hub.utils._http - DEBUG - Request b819c21f-f578-4f5e-8dc9-06289be91053: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors (authenticated: False)
+2025-04-22 05:04:26,817 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/model.safetensors HTTP/1.1" 302 0
+2025-04-22 05:04:26,835 - filelock - DEBUG - Attempting to acquire lock 140133807345472 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.lock
+2025-04-22 05:04:26,851 - filelock - DEBUG - Lock 140133807345472 acquired on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.lock
+Downloading 'model.safetensors' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.incomplete'
+2025-04-22 05:04:26,861 - huggingface_hub.file_download - INFO - Downloading 'model.safetensors' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.incomplete'
+Request 2056c34f-0163-4ea3-9d83-be891d0697e1: GET https://cdn-lfs-us-1.hf.co/repos/80/3b/803bf3a0c970ed5c554d34586697cf1613396ec4158c96d5290742c7421a5d88/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model.safetensors%3B+filename%3D%22model.safetensors%22%3B&Expires=1745301866&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NTMwMTg2Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zLzgwLzNiLzgwM2JmM2EwYzk3MGVkNWM1NTRkMzQ1ODY2OTdjZjE2MTMzOTZlYzQxNThjOTZkNTI5MDc0MmM3NDIxYTVkODgvNTg4NTgyMzM1MTNkNzZiODcwM2U3MmVlZDZjZTE2ODA3YjUyMzMyODE4OGUxMzMyOTI1N2ZiOTU5NDQ2Mjk0NT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=EksSCVo-4zW2FZ606-F-LztVx1ygxpKcNgOOWD54PoRBh3BZFu9XhBXjwXByIFqZARxFmai6N7kxYfD~GlY-o16iajpXsSJxTioMoyKs6kRhnsV9Bk0EAYC6Oim1yUStlxoaxK7V1QoNuRWxA3q5h8n6T2ABCywf7x4PyM4p1mywyh9ERiQB-WMm-I9BmHPpInFo~NpuZ2Nx1A6cj7mRdYLbrBHlTIQsx4tazhrV-l4XoJ06~rQ4mw6mIIEzBhL5mOuxe1EkXXy6h7Pf8n9ees0RqMo~AgLCtijW0Nuf~S0SDNGXQhwpukgCzC1w41BKAqbqE7EszlEEMrZgYbaZ9g__&Key-Pair-Id=K24J24Z295AEI9 (authenticated: False)
+2025-04-22 05:04:26,862 - huggingface_hub.utils._http - DEBUG - Request 2056c34f-0163-4ea3-9d83-be891d0697e1: GET https://cdn-lfs-us-1.hf.co/repos/80/3b/803bf3a0c970ed5c554d34586697cf1613396ec4158c96d5290742c7421a5d88/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model.safetensors%3B+filename%3D%22model.safetensors%22%3B&Expires=1745301866&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NTMwMTg2Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zLzgwLzNiLzgwM2JmM2EwYzk3MGVkNWM1NTRkMzQ1ODY2OTdjZjE2MTMzOTZlYzQxNThjOTZkNTI5MDc0MmM3NDIxYTVkODgvNTg4NTgyMzM1MTNkNzZiODcwM2U3MmVlZDZjZTE2ODA3YjUyMzMyODE4OGUxMzMyOTI1N2ZiOTU5NDQ2Mjk0NT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=EksSCVo-4zW2FZ606-F-LztVx1ygxpKcNgOOWD54PoRBh3BZFu9XhBXjwXByIFqZARxFmai6N7kxYfD~GlY-o16iajpXsSJxTioMoyKs6kRhnsV9Bk0EAYC6Oim1yUStlxoaxK7V1QoNuRWxA3q5h8n6T2ABCywf7x4PyM4p1mywyh9ERiQB-WMm-I9BmHPpInFo~NpuZ2Nx1A6cj7mRdYLbrBHlTIQsx4tazhrV-l4XoJ06~rQ4mw6mIIEzBhL5mOuxe1EkXXy6h7Pf8n9ees0RqMo~AgLCtijW0Nuf~S0SDNGXQhwpukgCzC1w41BKAqbqE7EszlEEMrZgYbaZ9g__&Key-Pair-Id=K24J24Z295AEI9 (authenticated: False)
+2025-04-22 05:04:26,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): cdn-lfs-us-1.hf.co:443
+2025-04-22 05:04:26,874 - urllib3.connectionpool - DEBUG - https://cdn-lfs-us-1.hf.co:443 "GET /repos/80/3b/803bf3a0c970ed5c554d34586697cf1613396ec4158c96d5290742c7421a5d88/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model.safetensors%3B+filename%3D%22model.safetensors%22%3B&Expires=1745301866&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NTMwMTg2Nn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zLzgwLzNiLzgwM2JmM2EwYzk3MGVkNWM1NTRkMzQ1ODY2OTdjZjE2MTMzOTZlYzQxNThjOTZkNTI5MDc0MmM3NDIxYTVkODgvNTg4NTgyMzM1MTNkNzZiODcwM2U3MmVlZDZjZTE2ODA3YjUyMzMyODE4OGUxMzMyOTI1N2ZiOTU5NDQ2Mjk0NT9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&Signature=EksSCVo-4zW2FZ606-F-LztVx1ygxpKcNgOOWD54PoRBh3BZFu9XhBXjwXByIFqZARxFmai6N7kxYfD~GlY-o16iajpXsSJxTioMoyKs6kRhnsV9Bk0EAYC6Oim1yUStlxoaxK7V1QoNuRWxA3q5h8n6T2ABCywf7x4PyM4p1mywyh9ERiQB-WMm-I9BmHPpInFo~NpuZ2Nx1A6cj7mRdYLbrBHlTIQsx4tazhrV-l4XoJ06~rQ4mw6mIIEzBhL5mOuxe1EkXXy6h7Pf8n9ees0RqMo~AgLCtijW0Nuf~S0SDNGXQhwpukgCzC1w41BKAqbqE7EszlEEMrZgYbaZ9g__&Key-Pair-Id=K24J24Z295AEI9 HTTP/1.1" 200 3554214621
+model.safetensors: 100%|████████████████████████████████████████████████████████████████████████████| 3.55G/3.55G [00:23<00:00, 150MB/s]
+Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945
+2025-04-22 05:04:50,595 - huggingface_hub.file_download - INFO - Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945
+Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/model.safetensors
+2025-04-22 05:07:50,196 - huggingface_hub.file_download - INFO - Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/model.safetensors
+2025-04-22 05:07:50,211 - filelock - DEBUG - Attempting to release lock 140133807345472 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.lock
+2025-04-22 05:07:50,212 - filelock - DEBUG - Lock 140133807345472 released on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/58858233513d76b8703e72eed6ce16807b523328188e13329257fb9594462945.lock
+loading weights file model.safetensors from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/model.safetensors
+Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151643
+}
+
 Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
-Time taken: 170.86 seconds
+All model checkpoint weights were used when initializing Qwen2ForCausalLM.
+
+All the weights of Qwen2ForCausalLM were initialized from the model checkpoint at deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use Qwen2ForCausalLM for predictions without further training.
+Request ada4e9ef-dd2c-41df-9f3e-7246ac334911: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:17:25,856 - huggingface_hub.utils._http - DEBUG - Request ada4e9ef-dd2c-41df-9f3e-7246ac334911: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:17:25,856 - urllib3.connectionpool - DEBUG - Resetting dropped connection: huggingface.co
+2025-04-22 05:17:25,879 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-04-22 05:17:27,990 - filelock - DEBUG - Attempting to acquire lock 140133807344080 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/052ab54633116a634da950ab483233c4ace0aa82.lock
+2025-04-22 05:17:28,013 - filelock - DEBUG - Lock 140133807344080 acquired on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/052ab54633116a634da950ab483233c4ace0aa82.lock
+Downloading 'generation_config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82.incomplete'
+2025-04-22 05:17:28,028 - huggingface_hub.file_download - INFO - Downloading 'generation_config.json' to '/mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82.incomplete'
+Request 75c6d7e9-d28f-4f64-8a86-ab93a36d0f28: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:17:28,030 - huggingface_hub.utils._http - DEBUG - Request 75c6d7e9-d28f-4f64-8a86-ab93a36d0f28: GET https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:17:28,046 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 200 181
+generation_config.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 181/181 [00:00<00:00, 42.8kB/s]
+Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82
+2025-04-22 05:17:28,069 - huggingface_hub.file_download - INFO - Download complete. Moving file to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82
+Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json
+2025-04-22 05:17:28,116 - huggingface_hub.file_download - INFO - Symlink not supported. Moving file from /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/blobs/052ab54633116a634da950ab483233c4ace0aa82 to /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json
+2025-04-22 05:17:28,136 - filelock - DEBUG - Attempting to release lock 140133807344080 on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/052ab54633116a634da950ab483233c4ace0aa82.lock
+2025-04-22 05:17:28,136 - filelock - DEBUG - Lock 140133807344080 released on /mnt/acs-bucket/hf10/.locks/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/052ab54633116a634da950ab483233c4ace0aa82.lock
+loading configuration file generation_config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json
+Generate config GenerationConfig {
+  "bos_token_id": 151646,
+  "do_sample": true,
+  "eos_token_id": 151643,
+  "temperature": 0.6,
+  "top_p": 0.95
+}
+
+Time taken: 783.75 seconds
 
 Step 2: Loading dataset...
-Disabling pyarrow memory mapping due to FUSE potentially...
-Time taken: 1.22 seconds
+Request 1f43e64e-0496-489b-bc31-f42f9490d576: HEAD https://huggingface.co/datasets/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:17:28,168 - huggingface_hub.utils._http - DEBUG - Request 1f43e64e-0496-489b-bc31-f42f9490d576: HEAD https://huggingface.co/datasets/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:17:28,181 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/main/README.md HTTP/1.1" 307 0
+Request 6c6bbe4a-f80b-4a74-9f27-33332e239736: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:17:28,183 - huggingface_hub.utils._http - DEBUG - Request 6c6bbe4a-f80b-4a74-9f27-33332e239736: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:17:28,193 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/main/README.md HTTP/1.1" 200 0
+Request 492b3054-e980-490e-ba11-56af809a62df: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,194 - huggingface_hub.utils._http - DEBUG - Request 492b3054-e980-490e-ba11-56af809a62df: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,206 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py HTTP/1.1" 307 0
+Request 5d2354c5-a855-406b-8a5e-42802056e92d: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,207 - huggingface_hub.utils._http - DEBUG - Request 5d2354c5-a855-406b-8a5e-42802056e92d: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,217 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py HTTP/1.1" 404 0
+Request dd243849-14f8-4a66-af58-80346acba95c: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,219 - huggingface_hub.utils._http - DEBUG - Request dd243849-14f8-4a66-af58-80346acba95c: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py (authenticated: False)
+2025-04-22 05:17:28,219 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): s3.amazonaws.com:443
+2025-04-22 05:17:28,251 - urllib3.connectionpool - DEBUG - https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py HTTP/1.1" 200 0
+Request 99f6db9f-413e-4dc6-9eab-e88fda9b5350: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,262 - huggingface_hub.utils._http - DEBUG - Request 99f6db9f-413e-4dc6-9eab-e88fda9b5350: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,274 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request 99f6db9f-413e-4dc6-9eab-e88fda9b5350: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,276 - huggingface_hub.utils._http - DEBUG - Request 99f6db9f-413e-4dc6-9eab-e88fda9b5350: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,288 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request 010eaa4c-a044-4bf2-8572-5112369dab00: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:17:28,290 - huggingface_hub.utils._http - DEBUG - Request 010eaa4c-a044-4bf2-8572-5112369dab00: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:17:28,302 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml HTTP/1.1" 307 0
+Request dff6e155-fb09-4188-87a5-21be95ed7610: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:17:28,304 - huggingface_hub.utils._http - DEBUG - Request dff6e155-fb09-4188-87a5-21be95ed7610: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:17:28,525 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml HTTP/1.1" 404 0
+Request 80b99efb-e16e-4fb5-bbb0-54b3fc477faf: GET https://datasets-server.huggingface.co/info?dataset=wikitext (authenticated: False)
+2025-04-22 05:17:28,527 - huggingface_hub.utils._http - DEBUG - Request 80b99efb-e16e-4fb5-bbb0-54b3fc477faf: GET https://datasets-server.huggingface.co/info?dataset=wikitext (authenticated: False)
+2025-04-22 05:17:28,527 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): datasets-server.huggingface.co:443
+2025-04-22 05:17:28,576 - urllib3.connectionpool - DEBUG - https://datasets-server.huggingface.co:443 "GET /info?dataset=wikitext HTTP/1.1" 404 None
+Request 687d8966-fd17-433c-a0f1-072cdf734702: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,578 - huggingface_hub.utils._http - DEBUG - Request 687d8966-fd17-433c-a0f1-072cdf734702: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,590 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request 687d8966-fd17-433c-a0f1-072cdf734702: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,592 - huggingface_hub.utils._http - DEBUG - Request 687d8966-fd17-433c-a0f1-072cdf734702: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,604 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request bc342fdc-8a67-4a77-b949-918a0c86bce6: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,606 - huggingface_hub.utils._http - DEBUG - Request bc342fdc-8a67-4a77-b949-918a0c86bce6: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,630 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False HTTP/1.1" 307 143
+Request bc342fdc-8a67-4a77-b949-918a0c86bce6: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,631 - huggingface_hub.utils._http - DEBUG - Request bc342fdc-8a67-4a77-b949-918a0c86bce6: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,645 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False HTTP/1.1" 200 619
+Request ab647658-ca1c-4014-86af-f65825361e2d: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,646 - huggingface_hub.utils._http - DEBUG - Request ab647658-ca1c-4014-86af-f65825361e2d: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,659 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request ab647658-ca1c-4014-86af-f65825361e2d: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,660 - huggingface_hub.utils._http - DEBUG - Request ab647658-ca1c-4014-86af-f65825361e2d: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,690 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request d76ef265-155e-4dba-9f85-746a9beaccf0: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,691 - huggingface_hub.utils._http - DEBUG - Request d76ef265-155e-4dba-9f85-746a9beaccf0: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,719 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False HTTP/1.1" 307 163
+Request d76ef265-155e-4dba-9f85-746a9beaccf0: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,720 - huggingface_hub.utils._http - DEBUG - Request d76ef265-155e-4dba-9f85-746a9beaccf0: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,737 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False HTTP/1.1" 200 1017
+Request 73713c2f-4a98-48d3-81a5-3b1f6097266a: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,740 - huggingface_hub.utils._http - DEBUG - Request 73713c2f-4a98-48d3-81a5-3b1f6097266a: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,740 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-04-22 05:17:28,762 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request 73713c2f-4a98-48d3-81a5-3b1f6097266a: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,763 - huggingface_hub.utils._http - DEBUG - Request 73713c2f-4a98-48d3-81a5-3b1f6097266a: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,777 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request 4404911a-a851-4c98-960b-1ad779869f4d: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,779 - huggingface_hub.utils._http - DEBUG - Request 4404911a-a851-4c98-960b-1ad779869f4d: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,792 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 4404911a-a851-4c98-960b-1ad779869f4d: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,793 - huggingface_hub.utils._http - DEBUG - Request 4404911a-a851-4c98-960b-1ad779869f4d: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,808 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request ee5367d9-45f7-4941-a78f-5ee9c90c6da3: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,811 - huggingface_hub.utils._http - DEBUG - Request ee5367d9-45f7-4941-a78f-5ee9c90c6da3: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,823 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request ee5367d9-45f7-4941-a78f-5ee9c90c6da3: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,825 - huggingface_hub.utils._http - DEBUG - Request ee5367d9-45f7-4941-a78f-5ee9c90c6da3: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,842 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request 4221d0db-08bb-473c-b0fd-3b32706916e7: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:17:28,846 - huggingface_hub.utils._http - DEBUG - Request 4221d0db-08bb-473c-b0fd-3b32706916e7: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:17:28,858 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json HTTP/1.1" 307 0
+Request 5d044251-fb37-4638-8343-e89e2c172a23: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:17:28,859 - huggingface_hub.utils._http - DEBUG - Request 5d044251-fb37-4638-8343-e89e2c172a23: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:17:28,872 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json HTTP/1.1" 404 0
+Request 4bd7313c-964f-4c6d-9e0c-e4e457d8257b: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,874 - huggingface_hub.utils._http - DEBUG - Request 4bd7313c-964f-4c6d-9e0c-e4e457d8257b: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,885 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 4bd7313c-964f-4c6d-9e0c-e4e457d8257b: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,887 - huggingface_hub.utils._http - DEBUG - Request 4bd7313c-964f-4c6d-9e0c-e4e457d8257b: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,950 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+Request 1f2f05b8-e562-4d5a-a2a6-f21527e5dd59: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,951 - huggingface_hub.utils._http - DEBUG - Request 1f2f05b8-e562-4d5a-a2a6-f21527e5dd59: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,963 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False HTTP/1.1" 307 157
+Request 1f2f05b8-e562-4d5a-a2a6-f21527e5dd59: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,965 - huggingface_hub.utils._http - DEBUG - Request 1f2f05b8-e562-4d5a-a2a6-f21527e5dd59: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:17:28,977 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False HTTP/1.1" 200 739
+Request 7b79f23a-ba26-4373-8940-76603a3fa9bb: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,981 - huggingface_hub.utils._http - DEBUG - Request 7b79f23a-ba26-4373-8940-76603a3fa9bb: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,993 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 7b79f23a-ba26-4373-8940-76603a3fa9bb: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:28,994 - huggingface_hub.utils._http - DEBUG - Request 7b79f23a-ba26-4373-8940-76603a3fa9bb: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:29,011 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+Request 7bbf06d3-dfc1-4bc6-89b9-753d0d4d9b6f: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:29,013 - huggingface_hub.utils._http - DEBUG - Request 7bbf06d3-dfc1-4bc6-89b9-753d0d4d9b6f: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:29,026 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 7bbf06d3-dfc1-4bc6-89b9-753d0d4d9b6f: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:29,027 - huggingface_hub.utils._http - DEBUG - Request 7bbf06d3-dfc1-4bc6-89b9-753d0d4d9b6f: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:17:29,042 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+2025-04-22 05:17:29,054 - filelock - DEBUG - Attempting to acquire lock 140133805293328 on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:17:29,076 - filelock - DEBUG - Lock 140133805293328 acquired on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:17:29,080 - filelock - DEBUG - Attempting to release lock 140133805293328 on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:17:29,080 - filelock - DEBUG - Lock 140133805293328 released on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:17:29,130 - filelock - DEBUG - Attempting to acquire lock 140133805544112 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+2025-04-22 05:17:29,152 - filelock - DEBUG - Lock 140133805544112 acquired on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+Generating test split:   0%|                                                                                                                                             | 0/4358 [00:00<?, ? examples/s]2025-04-22 05:17:29,176 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete/wikitext-test-00000-00000-of-NNNNN.arrow
+Generating test split: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 18624.12 examples/s]
+Generating train split:   0%|                                                                                                                                           | 0/36718 [00:00<?, ? examples/s]2025-04-22 05:17:29,440 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete/wikitext-train-00000-00000-of-NNNNN.arrow
+Generating train split: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36718/36718 [00:01<00:00, 18899.38 examples/s]
+Generating validation split:   0%|                                                                                                                                       | 0/3760 [00:00<?, ? examples/s]2025-04-22 05:17:31,467 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete/wikitext-validation-00000-00000-of-NNNNN.arrow
+Generating validation split: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 16969.42 examples/s]
+2025-04-22 05:17:31,714 - filelock - DEBUG - Attempting to acquire lock 140133805297968 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete_info.lock
+2025-04-22 05:17:31,736 - filelock - DEBUG - Lock 140133805297968 acquired on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete_info.lock
+2025-04-22 05:17:31,736 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete/dataset_info.json
+2025-04-22 05:17:31,773 - filelock - DEBUG - Attempting to release lock 140133805297968 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete_info.lock
+2025-04-22 05:17:31,773 - filelock - DEBUG - Lock 140133805297968 released on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3.incomplete_info.lock
+2025-04-22 05:17:31,852 - filelock - DEBUG - Attempting to release lock 140133805544112 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+2025-04-22 05:17:31,853 - filelock - DEBUG - Lock 140133805544112 released on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+Time taken: 3.82 seconds
 
 Step 3: Tokenizing dataset...
-Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f39c7da5430> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
-Map: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 14798.47 examples/s]
-Map: 100%|███████████████████████████████████████████████████████████████████████████████████████| 36718/36718 [00:02<00:00, 17158.33 examples/s]
-Map: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 14966.34 examples/s]
-Time taken: 2.70 seconds
+Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f7371dec9d0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+2025-04-22 05:17:31,992 - datasets.fingerprint - WARNING - Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f7371dec9d0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Map:   0%|                                                                                                                                                               | 0/4358 [00:00<?, ? examples/s]2025-04-22 05:17:32,081 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmp5bttlbnb
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 5380.85 examples/s]
+Map:   0%|                                                                                                                                                              | 0/36718 [00:00<?, ? examples/s]2025-04-22 05:17:32,878 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpb4ohho2w
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36718/36718 [00:05<00:00, 6263.22 examples/s]
+Map:   0%|                                                                                                                                                               | 0/3760 [00:00<?, ? examples/s]2025-04-22 05:17:38,743 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpe26uzf7l
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 5686.45 examples/s]
+Time taken: 7.36 seconds
 
 Step 4: Grouping text into blocks...
-Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 5822.30 examples/s]
-Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 4778.45 examples/s]
-Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 5665.37 examples/s]
-Time taken: 1.65 seconds
+Map:   0%|                                                                                                                                                               | 0/4358 [00:00<?, ? examples/s]2025-04-22 05:17:39,565 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmp0znvr11b
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:01<00:00, 3516.10 examples/s]
+Map:   0%|                                                                                                                                                               | 0/1000 [00:00<?, ? examples/s]2025-04-22 05:17:40,774 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpqy6l3635
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 3009.61 examples/s]
+Map:   0%|                                                                                                                                                               | 0/3760 [00:00<?, ? examples/s]2025-04-22 05:17:41,113 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmplpv54trq
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:01<00:00, 3505.01 examples/s]
+Time taken: 2.67 seconds
 
 Step 5: Setting up data collator...
 Time taken: 0.00 seconds
 
 Step 6: Setting up training arguments...
+PyTorch: setting up devices
 huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
 To disable this warning, you can either:
         - Avoid using `tokenizers` before the fork if possible
         - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
-/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:169: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:193: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
   trainer = Trainer(
-Time taken: 1.83 seconds
+Time taken: 1.91 seconds
 
 Step 7: Starting training...
-{'train_runtime': 157.5507, 'train_samples_per_second': 0.413, 'train_steps_per_second': 0.051, 'train_loss': 3.1208393573760986, 'epoch': 0.97} 
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [02:37<00:00, 19.69s/it]
-Training time: 157.69 seconds
+Currently training with a batch size of: 2
+***** Running training *****
+  Num examples = 65
+  Num Epochs = 1
+  Instantaneous batch size per device = 2
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 4
+  Total optimization steps = 8
+  Number of trainable parameters = 1,777,088,000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:21<00:00,  2.75s/it]Saving model checkpoint to /mnt/acs-bucket/hf10/checkpoint-8
+Configuration saved in /mnt/acs-bucket/hf10/checkpoint-8/config.json
+Configuration saved in /mnt/acs-bucket/hf10/checkpoint-8/generation_config.json
+The model is bigger than the maximum size per checkpoint (5GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at /mnt/acs-bucket/hf10/checkpoint-8/model.safetensors.index.json.
+tokenizer config file saved in /mnt/acs-bucket/hf10/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/checkpoint-8/special_tokens_map.json
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'train_runtime': 154.5527, 'train_samples_per_second': 0.421, 'train_steps_per_second': 0.052, 'train_loss': 3.1208393573760986, 'epoch': 0.97}                                                         
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [02:34<00:00, 19.32s/it]
+Training time: 154.69 seconds
 
 Step 8: Saving final model...
-Time taken: 33.46 seconds
+Saving model checkpoint to /mnt/acs-bucket/hf10
+Configuration saved in /mnt/acs-bucket/hf10/config.json
+Configuration saved in /mnt/acs-bucket/hf10/generation_config.json
+The model is bigger than the maximum size per checkpoint (5GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at /mnt/acs-bucket/hf10/model.safetensors.index.json.
+tokenizer config file saved in /mnt/acs-bucket/hf10/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/special_tokens_map.json
+tokenizer config file saved in /mnt/acs-bucket/hf10/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/special_tokens_map.json
+Time taken: 45.80 seconds
 
 === Training Pipeline Completed ===
-Total time taken: 369.41 seconds (0.10 hours)
-Training time: 157.69 seconds (0.04 hours)
+Total time taken: 1000.00 seconds (0.28 hours)
+Training time: 154.69 seconds (0.04 hours)
+(.venv) [ec2-user@ip-172-31-25-0 deepseekr1-finetuning]$ python train.py     --output_dir /mnt/acs-bucket/hf10     --cache_dir /mnt/acs-bucket/hf10     --dataset_name wikitext     --dataset_config wikitext-2-v1     --max_train_samples 1000 
+2025-04-22 05:21:32,555 - datasets - INFO - PyTorch version 2.6.0 available.
+Detected accelerate version: 1.6.0
+Detected datasets version: 3.5.0
+Detected jinja2 version: 3.1.5
+Detected pandas version: 2.2.3
+Detected psutil version: 7.0.0
+Detected pytest version: 8.3.5
+Detected safetensors version: 0.5.3
+Detected tokenizers version: 0.21.1
+Detected triton version: 3.2.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+Detected torch version: 2.6.0
+
+=== Starting Training Pipeline ===
+
+Step 1: Loading tokenizer and model...
+Request 18fc7080-556c-42de-bbb9-6bb09a47945c: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:21:33,996 - huggingface_hub.utils._http - DEBUG - Request 18fc7080-556c-42de-bbb9-6bb09a47945c: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json (authenticated: False)
+2025-04-22 05:21:33,996 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-04-22 05:21:34,020 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+loading file tokenizer.model from cache at None
+loading file tokenizer.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer.json
+loading file added_tokens.json from cache at None
+loading file special_tokens_map.json from cache at None
+loading file tokenizer_config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/tokenizer_config.json
+loading file chat_template.jinja from cache at None
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Request 54db77e0-aadc-4202-8d6c-711de11bf469: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:21:34,380 - huggingface_hub.utils._http - DEBUG - Request 54db77e0-aadc-4202-8d6c-711de11bf469: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json (authenticated: False)
+2025-04-22 05:21:34,391 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/config.json HTTP/1.1" 200 0
+loading configuration file config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/config.json
+Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "hidden_act": "silu",
+  "hidden_size": 1536,
+  "initializer_range": 0.02,
+  "intermediate_size": 8960,
+  "max_position_embeddings": 131072,
+  "max_window_layers": 21,
+  "model_type": "qwen2",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 2,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 10000,
+  "sliding_window": 4096,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.51.2",
+  "use_cache": true,
+  "use_mrope": false,
+  "use_sliding_window": false,
+  "vocab_size": 151936
+}
+
+loading weights file model.safetensors from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/model.safetensors
+Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151643
+}
+
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+All model checkpoint weights were used when initializing Qwen2ForCausalLM.
+
+All the weights of Qwen2ForCausalLM were initialized from the model checkpoint at deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use Qwen2ForCausalLM for predictions without further training.
+Request e6e2a46a-e1c9-4743-8c28-0a5a142ff4a2: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:21:35,164 - huggingface_hub.utils._http - DEBUG - Request e6e2a46a-e1c9-4743-8c28-0a5a142ff4a2: HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json (authenticated: False)
+2025-04-22 05:21:35,176 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B/resolve/main/generation_config.json HTTP/1.1" 200 0
+loading configuration file generation_config.json from cache at /mnt/acs-bucket/hf10/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562/generation_config.json
+Generate config GenerationConfig {
+  "bos_token_id": 151646,
+  "do_sample": true,
+  "eos_token_id": 151643,
+  "temperature": 0.6,
+  "top_p": 0.95
+}
+
+Time taken: 1.20 seconds
+
+Step 2: Loading dataset...
+Request 26ecca2d-d8a9-4977-b443-14a5f435dea3: HEAD https://huggingface.co/datasets/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:21:35,198 - huggingface_hub.utils._http - DEBUG - Request 26ecca2d-d8a9-4977-b443-14a5f435dea3: HEAD https://huggingface.co/datasets/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:21:35,213 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/main/README.md HTTP/1.1" 307 0
+Request eecc3828-8cbe-44aa-8499-7fd83b75e9fb: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:21:35,214 - huggingface_hub.utils._http - DEBUG - Request eecc3828-8cbe-44aa-8499-7fd83b75e9fb: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/main/README.md (authenticated: False)
+2025-04-22 05:21:35,226 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/main/README.md HTTP/1.1" 200 0
+Request 82476c4a-2462-4dd2-bdaa-dc4e390964a4: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,227 - huggingface_hub.utils._http - DEBUG - Request 82476c4a-2462-4dd2-bdaa-dc4e390964a4: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,238 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py HTTP/1.1" 307 0
+Request f7bf9215-7518-4538-a228-c3e240825301: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,239 - huggingface_hub.utils._http - DEBUG - Request f7bf9215-7518-4538-a228-c3e240825301: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,253 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext.py HTTP/1.1" 404 0
+Request a58a56e6-01ad-4547-8587-3f5763d86a98: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,254 - huggingface_hub.utils._http - DEBUG - Request a58a56e6-01ad-4547-8587-3f5763d86a98: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py (authenticated: False)
+2025-04-22 05:21:35,254 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): s3.amazonaws.com:443
+2025-04-22 05:21:35,277 - urllib3.connectionpool - DEBUG - https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/wikitext/wikitext.py HTTP/1.1" 200 0
+Request dfa19dd7-a922-44e7-8683-c7bade0d8fa1: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,288 - huggingface_hub.utils._http - DEBUG - Request dfa19dd7-a922-44e7-8683-c7bade0d8fa1: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,300 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request dfa19dd7-a922-44e7-8683-c7bade0d8fa1: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,301 - huggingface_hub.utils._http - DEBUG - Request dfa19dd7-a922-44e7-8683-c7bade0d8fa1: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,313 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request b2a2b920-5cd0-4e54-82ea-aa30534dc25d: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:21:35,315 - huggingface_hub.utils._http - DEBUG - Request b2a2b920-5cd0-4e54-82ea-aa30534dc25d: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:21:35,436 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml HTTP/1.1" 307 0
+Request 5a515344-9001-4b96-b775-45b3d3806318: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:21:35,437 - huggingface_hub.utils._http - DEBUG - Request 5a515344-9001-4b96-b775-45b3d3806318: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml (authenticated: False)
+2025-04-22 05:21:35,448 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/.huggingface.yaml HTTP/1.1" 404 0
+Request 38f7435c-5c7f-4a9e-b1ca-6500d83bd8b5: GET https://datasets-server.huggingface.co/info?dataset=wikitext (authenticated: False)
+2025-04-22 05:21:35,450 - huggingface_hub.utils._http - DEBUG - Request 38f7435c-5c7f-4a9e-b1ca-6500d83bd8b5: GET https://datasets-server.huggingface.co/info?dataset=wikitext (authenticated: False)
+2025-04-22 05:21:35,450 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): datasets-server.huggingface.co:443
+2025-04-22 05:21:35,503 - urllib3.connectionpool - DEBUG - https://datasets-server.huggingface.co:443 "GET /info?dataset=wikitext HTTP/1.1" 404 None
+Request 8af14e1b-b0d1-494e-9727-a0abe557ed07: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,506 - huggingface_hub.utils._http - DEBUG - Request 8af14e1b-b0d1-494e-9727-a0abe557ed07: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,516 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request 8af14e1b-b0d1-494e-9727-a0abe557ed07: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,517 - huggingface_hub.utils._http - DEBUG - Request 8af14e1b-b0d1-494e-9727-a0abe557ed07: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,528 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request 72757e85-9bfd-4241-8c3c-8ec37e4865ec: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,529 - huggingface_hub.utils._http - DEBUG - Request 72757e85-9bfd-4241-8c3c-8ec37e4865ec: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,543 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False HTTP/1.1" 307 143
+Request 72757e85-9bfd-4241-8c3c-8ec37e4865ec: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,544 - huggingface_hub.utils._http - DEBUG - Request 72757e85-9bfd-4241-8c3c-8ec37e4865ec: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,887 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3?recursive=False&expand=False HTTP/1.1" 200 619
+Request 242f6218-eac8-4457-b180-2538ce84885b: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,888 - huggingface_hub.utils._http - DEBUG - Request 242f6218-eac8-4457-b180-2538ce84885b: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,900 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 242f6218-eac8-4457-b180-2538ce84885b: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,901 - huggingface_hub.utils._http - DEBUG - Request 242f6218-eac8-4457-b180-2538ce84885b: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,919 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request 2d475952-e2e0-41a7-9d97-7cb53ee25df8: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,920 - huggingface_hub.utils._http - DEBUG - Request 2d475952-e2e0-41a7-9d97-7cb53ee25df8: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,932 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False HTTP/1.1" 307 163
+Request 2d475952-e2e0-41a7-9d97-7cb53ee25df8: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,933 - huggingface_hub.utils._http - DEBUG - Request 2d475952-e2e0-41a7-9d97-7cb53ee25df8: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:35,945 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-103-raw-v1?recursive=False&expand=False HTTP/1.1" 200 1017
+Request bdb0eb03-d909-4b7a-ba6a-f443bab17993: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,948 - huggingface_hub.utils._http - DEBUG - Request bdb0eb03-d909-4b7a-ba6a-f443bab17993: GET https://huggingface.co/api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2025-04-22 05:21:35,965 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 118
+Request bdb0eb03-d909-4b7a-ba6a-f443bab17993: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,967 - huggingface_hub.utils._http - DEBUG - Request bdb0eb03-d909-4b7a-ba6a-f443bab17993: GET https://huggingface.co/api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,977 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/revision/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 5016
+Request c66f76bb-27e5-448d-afff-6a84bb492249: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,980 - huggingface_hub.utils._http - DEBUG - Request c66f76bb-27e5-448d-afff-6a84bb492249: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,993 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request c66f76bb-27e5-448d-afff-6a84bb492249: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:35,994 - huggingface_hub.utils._http - DEBUG - Request c66f76bb-27e5-448d-afff-6a84bb492249: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,011 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request 28aaa3fc-f7c7-41fd-a965-78d14552e5fd: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,014 - huggingface_hub.utils._http - DEBUG - Request 28aaa3fc-f7c7-41fd-a965-78d14552e5fd: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,061 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 28aaa3fc-f7c7-41fd-a965-78d14552e5fd: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,062 - huggingface_hub.utils._http - DEBUG - Request 28aaa3fc-f7c7-41fd-a965-78d14552e5fd: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,079 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 250
+Request 2db27106-80cc-4d29-b4f9-2936a2c5d6ea: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:21:36,082 - huggingface_hub.utils._http - DEBUG - Request 2db27106-80cc-4d29-b4f9-2936a2c5d6ea: HEAD https://huggingface.co/datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:21:36,095 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json HTTP/1.1" 307 0
+Request 2750acf5-bf2d-4e67-9c61-9e3e304084f4: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:21:36,096 - huggingface_hub.utils._http - DEBUG - Request 2750acf5-bf2d-4e67-9c61-9e3e304084f4: HEAD https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json (authenticated: False)
+2025-04-22 05:21:36,110 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_infos.json HTTP/1.1" 404 0
+Request 6a96f271-8a06-4ab1-89b8-3777442b427f: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,111 - huggingface_hub.utils._http - DEBUG - Request 6a96f271-8a06-4ab1-89b8-3777442b427f: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,124 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 6a96f271-8a06-4ab1-89b8-3777442b427f: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,125 - huggingface_hub.utils._http - DEBUG - Request 6a96f271-8a06-4ab1-89b8-3777442b427f: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,140 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+Request 4693071e-8bbf-452e-bafb-95e28a10fee6: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:36,141 - huggingface_hub.utils._http - DEBUG - Request 4693071e-8bbf-452e-bafb-95e28a10fee6: GET https://huggingface.co/api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:36,151 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False HTTP/1.1" 307 157
+Request 4693071e-8bbf-452e-bafb-95e28a10fee6: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:36,152 - huggingface_hub.utils._http - DEBUG - Request 4693071e-8bbf-452e-bafb-95e28a10fee6: GET https://huggingface.co/api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False (authenticated: False)
+2025-04-22 05:21:36,165 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "GET /api/datasets/Salesforce/wikitext/tree/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-v1?recursive=False&expand=False HTTP/1.1" 200 739
+Request 48d266aa-d061-431a-9ee0-a3a39ab3d763: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,167 - huggingface_hub.utils._http - DEBUG - Request 48d266aa-d061-431a-9ee0-a3a39ab3d763: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,181 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 48d266aa-d061-431a-9ee0-a3a39ab3d763: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,182 - huggingface_hub.utils._http - DEBUG - Request 48d266aa-d061-431a-9ee0-a3a39ab3d763: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,207 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+Request 86a15d72-0e88-4f71-bda1-cb723ea7be76: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,209 - huggingface_hub.utils._http - DEBUG - Request 86a15d72-0e88-4f71-bda1-cb723ea7be76: POST https://huggingface.co/api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,221 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 307 120
+Request 86a15d72-0e88-4f71-bda1-cb723ea7be76: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,222 - huggingface_hub.utils._http - DEBUG - Request 86a15d72-0e88-4f71-bda1-cb723ea7be76: POST https://huggingface.co/api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 (authenticated: False)
+2025-04-22 05:21:36,238 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "POST /api/datasets/Salesforce/wikitext/paths-info/b08601e04326c79dfdd32d625aee71d232d685c3 HTTP/1.1" 200 244
+2025-04-22 05:21:36,246 - filelock - DEBUG - Attempting to acquire lock 140078770809488 on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:21:36,259 - filelock - DEBUG - Lock 140078770809488 acquired on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:21:36,265 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_info.json
+2025-04-22 05:21:36,272 - filelock - DEBUG - Attempting to release lock 140078770809488 on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:21:36,272 - filelock - DEBUG - Lock 140078770809488 released on /mnt/acs-bucket/hf10/_mnt_acs-bucket_hf10_wikitext_wikitext-2-v1_0.0.0_b08601e04326c79dfdd32d625aee71d232d685c3.lock
+2025-04-22 05:21:36,280 - filelock - DEBUG - Attempting to acquire lock 140078770234320 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+2025-04-22 05:21:36,292 - filelock - DEBUG - Lock 140078770234320 acquired on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+2025-04-22 05:21:36,295 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/dataset_info.json
+2025-04-22 05:21:36,297 - filelock - DEBUG - Attempting to release lock 140078770234320 on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+2025-04-22 05:21:36,298 - filelock - DEBUG - Lock 140078770234320 released on /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3_builder.lock
+Time taken: 1.12 seconds
+
+Step 3: Tokenizing dataset...
+Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f66a176c670> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+2025-04-22 05:21:36,320 - datasets.fingerprint - WARNING - Parameter 'function'=<function main.<locals>.tokenize_function at 0x7f66a176c670> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Map:   0%|                                                                                                                                                               | 0/4358 [00:00<?, ? examples/s]2025-04-22 05:21:36,383 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpxqmj7gny
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:00<00:00, 7607.48 examples/s]
+Map:   0%|                                                                                                                                                              | 0/36718 [00:00<?, ? examples/s]2025-04-22 05:21:36,943 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpegw250gy
+Map: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 36718/36718 [00:04<00:00, 7996.67 examples/s]
+Map:   0%|                                                                                                                                                               | 0/3760 [00:00<?, ? examples/s]2025-04-22 05:21:41,541 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpa2p92z8p
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:01<00:00, 3296.83 examples/s]
+Time taken: 6.32 seconds
+
+Step 4: Grouping text into blocks...
+Map:   0%|                                                                                                                                                               | 0/4358 [00:00<?, ? examples/s]2025-04-22 05:21:42,849 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmp117g0iyi
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4358/4358 [00:01<00:00, 4047.24 examples/s]
+Map:   0%|                                                                                                                                                               | 0/1000 [00:00<?, ? examples/s]2025-04-22 05:21:43,897 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmpb1acg50s
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 3615.48 examples/s]
+Map:   0%|                                                                                                                                                               | 0/3760 [00:00<?, ? examples/s]2025-04-22 05:21:44,182 - fsspec.local - DEBUG - open file: /mnt/acs-bucket/hf10/wikitext/wikitext-2-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3/tmp3d3fybpi
+Map: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3760/3760 [00:00<00:00, 4018.01 examples/s]
+Time taken: 2.31 seconds
+
+Step 5: Setting up data collator...
+Time taken: 0.00 seconds
+
+Step 6: Setting up training arguments...
+PyTorch: setting up devices
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+/home/ec2-user/Benchmarks/AI-training-demo/deepseekr1-finetuning/train.py:193: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+Time taken: 1.69 seconds
+
+Step 7: Starting training...
+Currently training with a batch size of: 2
+***** Running training *****
+  Num examples = 65
+  Num Epochs = 1
+  Instantaneous batch size per device = 2
+  Total train batch size (w. parallel, distributed & accumulation) = 8
+  Gradient Accumulation steps = 4
+  Total optimization steps = 8
+  Number of trainable parameters = 1,777,088,000
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:22<00:00,  2.77s/it]Saving model checkpoint to /mnt/acs-bucket/hf10/checkpoint-8
+Configuration saved in /mnt/acs-bucket/hf10/checkpoint-8/config.json
+Configuration saved in /mnt/acs-bucket/hf10/checkpoint-8/generation_config.json
+The model is bigger than the maximum size per checkpoint (5GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at /mnt/acs-bucket/hf10/checkpoint-8/model.safetensors.index.json.
+tokenizer config file saved in /mnt/acs-bucket/hf10/checkpoint-8/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/checkpoint-8/special_tokens_map.json
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'train_runtime': 169.0967, 'train_samples_per_second': 0.384, 'train_steps_per_second': 0.047, 'train_loss': 3.1208393573760986, 'epoch': 0.97}                                                         
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [02:49<00:00, 21.14s/it]
+Training time: 169.23 seconds
+
+Step 8: Saving final model...
+Saving model checkpoint to /mnt/acs-bucket/hf10
+Configuration saved in /mnt/acs-bucket/hf10/config.json
+Configuration saved in /mnt/acs-bucket/hf10/generation_config.json
+The model is bigger than the maximum size per checkpoint (5GB) and is going to be split in 2 checkpoint shards. You can find where each parameters has been saved in the index located at /mnt/acs-bucket/hf10/model.safetensors.index.json.
+tokenizer config file saved in /mnt/acs-bucket/hf10/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/special_tokens_map.json
+tokenizer config file saved in /mnt/acs-bucket/hf10/tokenizer_config.json
+Special tokens file saved in /mnt/acs-bucket/hf10/special_tokens_map.json
+Time taken: 46.69 seconds
+
+=== Training Pipeline Completed ===
+Total time taken: 228.58 seconds (0.06 hours)
+Training time: 169.23 seconds (0.05 hours)
