@@ -116,45 +116,28 @@ def main():
     start_time = time.time()
     args = parse_args()
     print("\n=== Starting Training Pipeline ===")    
-    # Setup logging wrapper function
-    def log_fs_info(message):
-        """Log message with filesystem debugging information"""
-        print(f"\n--- {message} ---")
-        # Log open files for this process
-        logging.debug(f"Open files during {message}")
-        try:
-            os.system(f"lsof -p {os.getpid()} | grep -E 'REG|DIR' | grep -v '.so' > fs_debug_{message.replace(' ', '_')}.log")
-            logging.debug(f"Saved open files info to fs_debug_{message.replace(' ', '_')}.log")
-        except Exception as e:
-            logging.warning(f"Failed to capture open files: {e}")
 
     # 1. Load tokenizer and model
     print("\nStep 1: Loading tokenizer and model...")
     step_start = time.time()
-    log_fs_info("Before tokenizer load")
     tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", cache_dir=args.cache_dir)
-    log_fs_info("After tokenizer load")
     model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B", cache_dir=args.cache_dir)
-    log_fs_info("After model load")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 2. Load dataset
     print("\nStep 2: Loading dataset...")
     step_start = time.time()
-    log_fs_info("Before dataset load")
     raw_datasets = load_dataset(
         args.dataset_name,
         args.dataset_config,
         cache_dir=args.cache_dir,
         trust_remote_code=True
     )
-    log_fs_info("After dataset load")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 3. Tokenize
     print("\nStep 3: Tokenizing dataset...")
     step_start = time.time()
-    log_fs_info("Before tokenization")
     def tokenize_function(examples):
         return tokenizer(examples["text"])
 
@@ -168,34 +151,28 @@ def main():
     # Optional: limit training set size for debugging
     if args.max_train_samples is not None:
         tokenized_datasets["train"] = tokenized_datasets["train"].select(range(args.max_train_samples))
-    log_fs_info("After tokenization")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 4. Group text into blocks for causal LM
     print("\nStep 4: Grouping text into blocks...")
     step_start = time.time()
-    log_fs_info("Before text grouping")
     lm_datasets = tokenized_datasets.map(
         lambda examples: group_texts(examples, args.block_size),
         batched=True,
     )
-    log_fs_info("After text grouping")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 5. Data collator setup
     print("\nStep 5: Setting up data collator...")
     step_start = time.time()
-    log_fs_info("Before data collator setup")
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, mlm=False
     )
-    log_fs_info("After data collator setup")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 6. Training setup
     print("\nStep 6: Setting up training arguments...")
     step_start = time.time()
-    log_fs_info("Before training setup")
     training_args = TrainingArguments(
         output_dir=args.output_dir,
         overwrite_output_dir=True,
@@ -221,52 +198,26 @@ def main():
         tokenizer=tokenizer,
         data_collator=data_collator,
     )
-    log_fs_info("After training setup")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 7. Training
     print("\nStep 7: Starting training...")
     step_start = time.time()
-    log_fs_info("Before training start")
-    # Add callbacks to log filesystem activity during training
-    class FSDebugCallback(TrainerCallback):
-        def on_step_end(self, args, state, control, **kwargs):
-            if state.global_step % 100 == 0:  # Log every 100 steps
-                log_fs_info(f"During training - step {state.global_step}")
-                
-        def on_evaluate(self, args, state, control, **kwargs):
-            log_fs_info(f"During evaluation - step {state.global_step}")
-            
-        def on_save(self, args, state, control, **kwargs):
-            log_fs_info(f"During model saving - step {state.global_step}")
-            
-    trainer.add_callback(FSDebugCallback())
     trainer.train()
     training_time = time.time() - step_start
-    log_fs_info("After training")
     print(f"Training time: {training_time:.2f} seconds")
 
     # 8. Save final model
     print("\nStep 8: Saving final model...")
     step_start = time.time()
-    log_fs_info("Before final model save")
     trainer.save_model(args.output_dir)
     tokenizer.save_pretrained(args.output_dir)
-    log_fs_info("After final model save")
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
-    
-    # Examine cache directories after training
-    print("\nDEBUG: Listing cache directories after training")
-    os.system("ls -la ~/.cache/huggingface/")
 
     total_time = time.time() - start_time
     print(f"\n=== Training Pipeline Completed ===")
     print(f"Total time taken: {total_time:.2f} seconds ({total_time/3600:.2f} hours)")
     print(f"Training time: {training_time:.2f} seconds ({training_time/3600:.2f} hours)")
-    
-    # Summarize filesystem activity
-    print("\nFinished with detailed filesystem debugging. Check 'hf_training_debug.log' for full logs.")
-    print("Individual filesystem snapshots are available in fs_debug_*.log files")
 
 
 if __name__ == "__main__":
