@@ -26,7 +26,12 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.29.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.33.17 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/openai/openai-go v0.1.0-beta.10 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
+	github.com/tidwall/gjson v1.18.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.1 // indirect
+	github.com/tidwall/sjson v1.2.5 // indirect
 	golang.org/x/net v0.36.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
