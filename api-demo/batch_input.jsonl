@@ -1,2 +1,0 @@
-{"custom_id":"request-1","method":"POST","url":"/v1/responses","body":{"model":"gpt-4o-mini","input":"System: You are a helpful assistant.\nUser: What is the capital of France?"}}
-{"custom_id":"request-2","method":"POST","url":"/v1/responses","body":{"model":"gpt-4o-mini","input":"System: You are a helpful assistant.\nUser: Summarize the main plot of 'Hamlet'."}}
