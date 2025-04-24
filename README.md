@@ -14,6 +14,8 @@ The repository is organized into several test directories:
   - `python/`: Python SDK benchmarks
 - `fuse-mount-test/`: Contains FUSE filesystem performance tests
   - `benchmark.py`: Script for running filesystem performance comparisons
+- `api-demo/`: Contains API demonstration examples
+- `tigris-client-test/`: Contains SDK client benchmarks for Tigris
 - `experimentResults/`: Directory where benchmark results are stored
 
 ## Prerequisites
