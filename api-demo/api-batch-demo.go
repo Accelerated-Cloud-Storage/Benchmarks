@@ -239,6 +239,30 @@ func (bm *BatchManager) LoadResponses(ctx context.Context, key string) ([]BatchR
 	return responses, nil
 }
 
+
+// ListBatches returns a list of all batch IDs
+func (bm *BatchManager) ListBatches(ctx context.Context) ([]string, error) {
+	opts := &client.ListObjectsOptions{
+		Prefix: "batch-status/",
+	}
+
+	keys, err := bm.acsClient.ListObjects(ctx, bm.bucket, opts)
+	if err != nil {
+		return nil, fmt.Errorf("failed to list batches: %w", err)
+	}
+
+	// Extract batch IDs from keys
+	batchIDs := make([]string, 0, len(keys))
+	for _, key := range keys {
+		// Remove prefix and .json suffix
+		batchID := strings.TrimPrefix(key, "batch-status/")
+		batchID = strings.TrimSuffix(batchID, ".json")
+		batchIDs = append(batchIDs, batchID)
+	}
+
+	return batchIDs, nil
+}
+
 // generateUniqueBucketName creates a unique bucket name for batch processing
 func generateUniqueBucketName() (string, error) {
 	// Generate a unique identifier using timestamp and random string
@@ -791,29 +815,6 @@ func (bm *BatchManager) GetBatchProgress(ctx context.Context, batchID string) (*
 	return bm.getBatchStatus(ctx, batchID)
 }
 
-// ListBatches returns a list of all batch IDs
-func (bm *BatchManager) ListBatches(ctx context.Context) ([]string, error) {
-	opts := &client.ListObjectsOptions{
-		Prefix: "batch-status/",
-	}
-
-	keys, err := bm.acsClient.ListObjects(ctx, bm.bucket, opts)
-	if err != nil {
-		return nil, fmt.Errorf("failed to list batches: %w", err)
-	}
-
-	// Extract batch IDs from keys
-	batchIDs := make([]string, 0, len(keys))
-	for _, key := range keys {
-		// Remove prefix and .json suffix
-		batchID := strings.TrimPrefix(key, "batch-status/")
-		batchID = strings.TrimSuffix(batchID, ".json")
-		batchIDs = append(batchIDs, batchID)
-	}
-
-	return batchIDs, nil
-}
-
 func main() {
 	ctx := context.Background()
 
@@ -946,6 +947,28 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error processing batch: %v\n", err)
 		os.Exit(1)
+	}
+
+	// List all available batches
+	fmt.Printf("\n=== Available Batches ===\n")
+	allBatches, err := batchManager.ListBatches(ctx)
+	if err != nil {
+		fmt.Printf("Error listing all batches: %v\n", err)
+	} else {
+		fmt.Printf("Found %d batches:\n", len(allBatches))
+		for _, batchID := range allBatches {
+			// Get batch status
+			status, err := batchManager.GetBatchProgress(ctx, batchID)
+			if err != nil {
+				fmt.Printf("  - %s (status unavailable)\n", batchID)
+				continue
+			}
+			fmt.Printf("  - Batch %s: %s, %d/%d items completed\n",
+				batchID,
+				status.Status,
+				status.Completed,
+				status.TotalItems)
+		}
 	}
 
 	// Print results
