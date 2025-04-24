@@ -2,6 +2,8 @@ github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250317045151-dc4ce77ddd21
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250317045151-dc4ce77ddd21/go.mod h1:baX4bG3ww6NJjtQIPDUY2ki4Y1AhYJK0x3QSDtzQISg=
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250409075629-9eb187f89f93 h1:UbZFbp33R0ZLyMgfS2isge7W+s1tn/3MAOn3Xk/EjNY=
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250409075629-9eb187f89f93/go.mod h1:fWKgtHjfgtLzCJQ1x18Vqb23ycxbtMFtS3UyHHT0XQ8=
+github.com/anthropics/anthropic-sdk-go v0.2.0-beta.3 h1:b5t1ZJMvV/l99y4jbz7kRFdUp3BSDkI8EhSlHczivtw=
+github.com/anthropics/anthropic-sdk-go v0.2.0-beta.3/go.mod h1:AapDW22irxK2PSumZiQXYUFvsdQgkwIWlpESweWZI/c=
 github.com/aws/aws-sdk-go-v2 v1.36.3 h1:mJoei2CxPutQVxaATCzDUjcZEjVRdpsiiXi2o38yqWM=
 github.com/aws/aws-sdk-go-v2 v1.36.3/go.mod h1:LLXuLpgzEbD766Z5ECcRmi8AzSwfZItDtmABVkRLGzg=
 github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.10 h1:zAybnyUQXIZ5mok5Jqwlf58/TFE7uvd3IAsa1aF9cXs=
