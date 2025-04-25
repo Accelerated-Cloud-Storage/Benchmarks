@@ -14,8 +14,8 @@ strace -f -tt -T \
     -e verbose=all \
     -s 2048 \
     -o $STRACE_LOG python train.py \
-    --output_dir /mnt/acs-bucket/hf8 \
-    --cache_dir /mnt/acs-bucket/hf8 \
+    --output_dir /mnt/acs-bucket/hf14 \
+    --cache_dir /mnt/acs-bucket/hf14 \
     --dataset_name wikitext \
     --dataset_config wikitext-2-v1 \
     --max_train_samples 1000 \

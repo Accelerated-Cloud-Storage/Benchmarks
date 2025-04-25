@@ -52,7 +52,13 @@ def parse_args():
         "--dataset_name",
         type=str,
         default="deepmind/pg19", #wikitext
-        help="Name of the dataset from the Hugging Face Hub or a local path."
+        help="Name of the dataset from the Hugging Face Hub (ignored if dataset_path is provided)."
+    )
+    parser.add_argument(
+        "--dataset_path",
+        type=str,
+        default=None,
+        help="Path to a local dataset. If provided, dataset_name will be ignored."
     )
     parser.add_argument(
         "--dataset_config",
@@ -127,12 +133,27 @@ def main():
     # 2. Load dataset
     print("\nStep 2: Loading dataset...")
     step_start = time.time()
-    raw_datasets = load_dataset(
-        args.dataset_name,
-        args.dataset_config,
-        cache_dir=args.cache_dir,
-        trust_remote_code=True
-    )
+    if args.dataset_path:
+        print(f"Loading dataset from local path: {args.dataset_path}")
+        data_files = {
+            "train": os.path.join(args.dataset_path, "train", "train.json"),
+            "validation": os.path.join(args.dataset_path, "validation", "valid.json"),
+            "test": os.path.join(args.dataset_path, "test", "test.json")
+        }
+        raw_datasets = load_dataset(
+            "json",
+            data_files=data_files,
+            cache_dir=args.cache_dir,
+            trust_remote_code=True
+        )
+    else:
+        print(f"Loading dataset from Hugging Face Hub: {args.dataset_name}")
+        raw_datasets = load_dataset(
+            args.dataset_name,
+            args.dataset_config,
+            cache_dir=args.cache_dir,
+            trust_remote_code=True
+        )
     print(f"Time taken: {time.time() - step_start:.2f} seconds")
 
     # 3. Tokenize
