@@ -1,0 +1,107 @@
+CS_PROFILE environment variable not set, using 'default' profile.
+Creating bucket: test-bucket-1745614920821888000
+Starting write operations for varying object sizes...
+
+Writing 50 objects of size 1024 bytes
+
+Write (Size: 1024 bytes) Metrics:
+Min Latency: 7.71 ms
+Average Latency: 11.27 ms
+P90 Latency: 12.18 ms
+P95 Latency: 13.52 ms
+P99 Latency: 18.78 ms
+Throughput: 88.75 ops/sec
+Throughput: 0.0001 GB/sec
+
+Writing 50 objects of size 1048576 bytes
+
+Write (Size: 1048576 bytes) Metrics:
+Min Latency: 49.86 ms
+Average Latency: 56.40 ms
+P90 Latency: 65.11 ms
+P95 Latency: 68.75 ms
+P99 Latency: 119.05 ms
+Throughput: 17.73 ops/sec
+Throughput: 0.0173 GB/sec
+
+Writing 50 objects of size 10485760 bytes
+
+Write (Size: 10485760 bytes) Metrics:
+Min Latency: 169.93 ms
+Average Latency: 209.96 ms
+P90 Latency: 230.06 ms
+P95 Latency: 235.05 ms
+P99 Latency: 305.16 ms
+Throughput: 4.76 ops/sec
+Throughput: 0.0465 GB/sec
+
+Starting read operations for varying object sizes...
+
+Reading 50 objects of size 1024 bytes
+
+Read (Size: 1024 bytes) Metrics:
+Min Latency: 7.75 ms
+Average Latency: 10.33 ms
+P90 Latency: 11.85 ms
+P95 Latency: 11.97 ms
+P99 Latency: 12.28 ms
+Throughput: 96.78 ops/sec
+Throughput: 0.0001 GB/sec
+
+Reading 50 objects of size 1048576 bytes
+
+Read (Size: 1048576 bytes) Metrics:
+Min Latency: 17.83 ms
+Average Latency: 21.13 ms
+P90 Latency: 21.50 ms
+P95 Latency: 21.94 ms
+P99 Latency: 74.39 ms
+Throughput: 47.34 ops/sec
+Throughput: 0.0462 GB/sec
+
+Reading 50 objects of size 10485760 bytes
+
+Read (Size: 10485760 bytes) Metrics:
+Min Latency: 98.88 ms
+Average Latency: 110.65 ms
+P90 Latency: 125.94 ms
+P95 Latency: 126.90 ms
+P99 Latency: 130.35 ms
+Throughput: 9.04 ops/sec
+Throughput: 0.0883 GB/sec
+
+Starting delete operations...
+
+Deleting 50 objects of size 1024 bytes
+
+Delete (Size: 1024 bytes) Metrics:
+Min Latency: 7.79 ms
+Average Latency: 10.63 ms
+P90 Latency: 11.52 ms
+P95 Latency: 11.62 ms
+P99 Latency: 12.04 ms
+Throughput: 94.05 ops/sec
+Throughput: 0.0001 GB/sec
+
+Deleting 50 objects of size 1048576 bytes
+
+Delete (Size: 1048576 bytes) Metrics:
+Min Latency: 7.30 ms
+Average Latency: 9.93 ms
+P90 Latency: 11.48 ms
+P95 Latency: 11.50 ms
+P99 Latency: 14.69 ms
+Throughput: 100.71 ops/sec
+Throughput: 0.0984 GB/sec
+
+Deleting 50 objects of size 10485760 bytes
+
+Delete (Size: 10485760 bytes) Metrics:
+Min Latency: 7.35 ms
+Average Latency: 10.11 ms
+P90 Latency: 11.55 ms
+P95 Latency: 11.64 ms
+P99 Latency: 11.89 ms
+Throughput: 98.95 ops/sec
+Throughput: 0.9663 GB/sec
+Cleaning up bucket: test-bucket-1745614920821888000

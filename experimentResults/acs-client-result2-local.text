@@ -1,0 +1,116 @@
+ACS Client SDK Benchmark - Test Suite 2
+======================================
+
+===== LARGE OBJECT TEST =====
+ACS_PROFILE environment variable not set, using 'default' profile.
+
+Creating bucket: large-object-test-1745617202913003000
+
+Generating 10.00GB of random data...
+
+Uploading large object...
+
+Large Object Upload Metrics:
+Min Latency: 173308.47 ms
+Average Latency: 173308.47 ms
+P90 Latency: 173308.47 ms
+P95 Latency: 173308.47 ms
+P99 Latency: 173308.47 ms
+Throughput: 0.01 ops/sec
+Throughput: 0.057701 GB/sec
+
+Reading large object...
+
+Large Object Download Metrics:
+Min Latency: 174797.63 ms
+Average Latency: 174797.63 ms
+P90 Latency: 174797.63 ms
+P95 Latency: 174797.63 ms
+P99 Latency: 174797.63 ms
+Throughput: 0.01 ops/sec
+Throughput: 0.057209 GB/sec
+
+Verifying data integrity...
+Data integrity verified successfully!
+
+Deleting large object...
+
+Large Object Deletion Metrics:
+Min Latency: 8.84 ms
+Average Latency: 8.84 ms
+P90 Latency: 8.84 ms
+P95 Latency: 8.84 ms
+P99 Latency: 8.84 ms
+Throughput: 113.06 ops/sec
+Throughput: 1130.619575 GB/sec
+
+Cleaning up bucket: large-object-test-1745617202913003000
+
+===== LIST OPERATIONS TEST =====
+ACS_PROFILE environment variable not set, using 'default' profile.
+
+Creating 100 buckets...
+
+Bucket Creation Metrics:
+Min Latency: 9.02 ms
+Average Latency: 11.26 ms
+P90 Latency: 11.97 ms
+P95 Latency: 12.04 ms
+P99 Latency: 12.67 ms
+Throughput: 88.82 ops/sec
+
+Listing all buckets...
+
+Bucket Listing Metrics:
+Min Latency: 10.02 ms
+Average Latency: 11.28 ms
+P90 Latency: 12.11 ms
+P95 Latency: 12.11 ms
+P99 Latency: 12.11 ms
+Throughput: 88.65 ops/sec
+
+Deleting 100 buckets...
+
+Bucket Deletion Metrics:
+Min Latency: 9.81 ms
+Average Latency: 11.27 ms
+P90 Latency: 11.81 ms
+P95 Latency: 11.97 ms
+P99 Latency: 12.27 ms
+Throughput: 88.70 ops/sec
+
+Creating bucket for object list test: object-list-test-1745617564712093000
+
+Creating 1000 objects of size 1 byte...
+
+Object Creation Metrics:
+Min Latency: 7.38 ms
+Average Latency: 11.15 ms
+P90 Latency: 11.61 ms
+P95 Latency: 11.79 ms
+P99 Latency: 12.21 ms
+Throughput: 89.71 ops/sec
+Throughput: 0.000000 GB/sec
+
+Listing all objects...
+
+Object Listing Metrics:
+Min Latency: 9.92 ms
+Average Latency: 12.22 ms
+P90 Latency: 21.50 ms
+P95 Latency: 21.50 ms
+P99 Latency: 21.50 ms
+Throughput: 81.85 ops/sec
+
+Deleting 1000 objects...
+
+Object Deletion Metrics:
+Min Latency: 7.30 ms
+Average Latency: 11.03 ms
+P90 Latency: 11.74 ms
+P95 Latency: 12.10 ms
+P99 Latency: 14.57 ms
+Throughput: 90.66 ops/sec
+Throughput: 0.000000 GB/sec
+
+Cleaning up bucket: object-list-test-1745617564712093000
