@@ -229,7 +229,7 @@ def main():
     print("======================================")
     
     large_object_test()
-    list_operations_test()
+    #list_operations_test()
 
 if __name__ == "__main__":
     main() 

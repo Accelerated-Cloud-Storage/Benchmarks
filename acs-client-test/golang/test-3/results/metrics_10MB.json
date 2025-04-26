@@ -1,0 +1,38 @@
+{
+  "BytesSent": 235358267108,
+  "BytesReceived": 157974930524,
+  "PacketsSent": 53746945,
+  "PacketsReceived": 16951362,
+  "TCPRetransmits": 199356,
+  "TCPConnections": 98,
+  "NetworkLatency": 76000,
+  "NetworkThroughput": 1197.0658226013184,
+  "CPUUsage": 2.2508792496224386,
+  "MemoryUsage": 2.9736611632519545,
+  "MemoryAllocated": 8036433920,
+  "GRPCActiveConns": 0,
+  "PutMetrics": {
+    "TotalOperations": 1110,
+    "SuccessCount": 1110,
+    "ErrorCount": 0,
+    "TotalBytes": 2107637760,
+    "AvgLatency": 47550385,
+    "MaxLatency": 161109272,
+    "MinLatency": 5009027,
+    "AvgCompressTime": 32,
+    "AvgTransferTime": 47549768,
+    "Throughput": 212.59140610769398
+  },
+  "GetMetrics": {
+    "TotalOperations": 1100,
+    "SuccessCount": 1100,
+    "ErrorCount": 0,
+    "TotalBytes": 2097152000,
+    "AvgLatency": 53537823,
+    "MaxLatency": 201093288,
+    "MinLatency": 22996120,
+    "AvgCompressTime": 0,
+    "AvgTransferTime": 53536720,
+    "Throughput": 130.43174971608065
+  }
+}
