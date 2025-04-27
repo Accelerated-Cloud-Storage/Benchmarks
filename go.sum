@@ -2,6 +2,8 @@ github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250317045151-dc4ce77ddd21
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250317045151-dc4ce77ddd21/go.mod h1:baX4bG3ww6NJjtQIPDUY2ki4Y1AhYJK0x3QSDtzQISg=
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250409075629-9eb187f89f93 h1:UbZFbp33R0ZLyMgfS2isge7W+s1tn/3MAOn3Xk/EjNY=
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250409075629-9eb187f89f93/go.mod h1:fWKgtHjfgtLzCJQ1x18Vqb23ycxbtMFtS3UyHHT0XQ8=
+github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250427025813-c50715db54ee h1:lI7hkMZlvb+oba3wBFFOkBWtBuw6KfWt7IX1zFw1zO4=
+github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250427025813-c50715db54ee/go.mod h1:W5CsgNLkynXXQj36sMOosZdRODKXWkuivLPVjeih/rI=
 github.com/aws/aws-sdk-go-v2 v1.36.3 h1:mJoei2CxPutQVxaATCzDUjcZEjVRdpsiiXi2o38yqWM=
 github.com/aws/aws-sdk-go-v2 v1.36.3/go.mod h1:LLXuLpgzEbD766Z5ECcRmi8AzSwfZItDtmABVkRLGzg=
 github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.10 h1:zAybnyUQXIZ5mok5Jqwlf58/TFE7uvd3IAsa1aF9cXs=
@@ -59,6 +61,8 @@ github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
 github.com/kr/text v0.2.0/go.mod h1:eLer722TekiGuMkidMxC/pM04lWEeraHUUmBw8l2grE=
 github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 h1:6E+4a0GO5zZEnZ81pIr0yLvtUWk2if982qA3F3QD6H4=
 github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0/go.mod h1:zJYVVT2jmtg6P3p1VtQj7WsuWi/y4VnjVBn7F8KPB3I=
+github.com/pierrec/lz4/v4 v4.1.22 h1:cKFw6uJDK+/gfw5BcDL0JL5aBsAFdsIT18eRtLj7VIU=
+github.com/pierrec/lz4/v4 v4.1.22/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c h1:ncq/mPwQF4JjgDlrVEn3C11VoGHZN7m8qihwgMEtzYw=
 github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c/go.mod h1:OmDBASR4679mdNQnz2pUhc2G8CO2JrUAVFDRBDP/hJE=

@@ -3,7 +3,7 @@ module github.com/Accelerated-Cloud-Storage/Benchmarks
 go 1.24.0
 
 require (
-	github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250409075629-9eb187f89f93
+	github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250427025813-c50715db54ee
 	github.com/aws/aws-sdk-go-v2 v1.36.3
 	github.com/aws/aws-sdk-go-v2/config v1.29.11
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.78.2
@@ -29,6 +29,7 @@ require (
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
+	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/shoenig/go-m1cpu v0.1.6 // indirect
