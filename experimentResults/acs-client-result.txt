@@ -1,106 +1,109 @@
-(.venv) [ec2-user@ip-10-0-39-49 acs-client-test]$ python client-sdk.py 
-Creating bucket: test-bucket-1742948158316521760
+ACS Client SDK Benchmark - Test Suite 1
+======================================
+ACS_PROFILE environment variable not set, using 'default' profile.
+Creating bucket: test-bucket-1746321752500848501
 Starting write operations for varying object sizes...
 
 Writing 50 objects of size 1024 bytes
 
 Write (Size: 1024 bytes) Metrics:
-Min Latency: 1.23 ms
-Average Latency: 1.80 ms
-P90 Latency: 2.08 ms
-P95 Latency: 2.84 ms
-P99 Latency: 3.46 ms
-Throughput: 554.16 ops/sec
-Throughput: 0.0005 GB/sec
+Min Latency: 0.22 ms
+Average Latency: 0.55 ms
+P90 Latency: 0.59 ms
+P95 Latency: 1.81 ms
+P99 Latency: 2.40 ms
+Throughput: 1820.36 ops/sec
+Throughput: 0.0017 GB/sec
 
 Writing 50 objects of size 1048576 bytes
 
 Write (Size: 1048576 bytes) Metrics:
-Min Latency: 2.89 ms
-Average Latency: 3.90 ms
-P90 Latency: 5.11 ms
-P95 Latency: 5.53 ms
-P99 Latency: 7.24 ms
-Throughput: 256.50 ops/sec
-Throughput: 0.2505 GB/sec
+Min Latency: 1.35 ms
+Average Latency: 1.98 ms
+P90 Latency: 2.64 ms
+P95 Latency: 3.62 ms
+P99 Latency: 4.05 ms
+Throughput: 506.18 ops/sec
+Throughput: 0.4943 GB/sec
 
 Writing 50 objects of size 10485760 bytes
 
 Write (Size: 10485760 bytes) Metrics:
-Min Latency: 20.41 ms
-Average Latency: 23.50 ms
-P90 Latency: 27.08 ms
-P95 Latency: 27.21 ms
-P99 Latency: 27.42 ms
-Throughput: 42.56 ops/sec
-Throughput: 0.4156 GB/sec
+Min Latency: 9.77 ms
+Average Latency: 15.79 ms
+P90 Latency: 23.18 ms
+P95 Latency: 23.95 ms
+P99 Latency: 28.04 ms
+Throughput: 63.35 ops/sec
+Throughput: 0.6186 GB/sec
 
 Starting read operations for varying object sizes...
 
 Reading 50 objects of size 1024 bytes
 
 Read (Size: 1024 bytes) Metrics:
-Min Latency: 1.38 ms
-Average Latency: 1.86 ms
-P90 Latency: 2.23 ms
-P95 Latency: 2.43 ms
-P99 Latency: 2.45 ms
-Throughput: 538.63 ops/sec
-Throughput: 0.0005 GB/sec
+Min Latency: 0.62 ms
+Average Latency: 3.45 ms
+P90 Latency: 4.14 ms
+P95 Latency: 5.59 ms
+P99 Latency: 11.48 ms
+Throughput: 289.60 ops/sec
+Throughput: 0.0003 GB/sec
 
 Reading 50 objects of size 1048576 bytes
 
 Read (Size: 1048576 bytes) Metrics:
-Min Latency: 2.74 ms
-Average Latency: 3.35 ms
-P90 Latency: 3.81 ms
-P95 Latency: 4.02 ms
-P99 Latency: 6.76 ms
-Throughput: 298.51 ops/sec
-Throughput: 0.2915 GB/sec
+Min Latency: 2.88 ms
+Average Latency: 4.96 ms
+P90 Latency: 9.96 ms
+P95 Latency: 10.81 ms
+P99 Latency: 13.26 ms
+Throughput: 201.75 ops/sec
+Throughput: 0.1970 GB/sec
 
 Reading 50 objects of size 10485760 bytes
 
 Read (Size: 10485760 bytes) Metrics:
-Min Latency: 19.29 ms
-Average Latency: 19.96 ms
-P90 Latency: 20.48 ms
-P95 Latency: 20.59 ms
-P99 Latency: 20.80 ms
-Throughput: 50.11 ops/sec
-Throughput: 0.4893 GB/sec
+Min Latency: 9.07 ms
+Average Latency: 13.94 ms
+P90 Latency: 19.58 ms
+P95 Latency: 20.22 ms
+P99 Latency: 20.29 ms
+Throughput: 71.72 ops/sec
+Throughput: 0.7004 GB/sec
 
 Starting delete operations...
 
 Deleting 50 objects of size 1024 bytes
 
 Delete (Size: 1024 bytes) Metrics:
-Min Latency: 1.29 ms
-Average Latency: 1.68 ms
-P90 Latency: 2.05 ms
-P95 Latency: 2.12 ms
-P99 Latency: 2.38 ms
-Throughput: 593.57 ops/sec
-Throughput: 0.0006 GB/sec
+Min Latency: 0.21 ms
+Average Latency: 0.39 ms
+P90 Latency: 0.64 ms
+P95 Latency: 0.65 ms
+P99 Latency: 0.79 ms
+Throughput: 2577.85 ops/sec
+Throughput: 0.0025 GB/sec
 
 Deleting 50 objects of size 1048576 bytes
 
 Delete (Size: 1048576 bytes) Metrics:
-Min Latency: 1.21 ms
-Average Latency: 1.53 ms
-P90 Latency: 1.66 ms
-P95 Latency: 1.68 ms
-P99 Latency: 1.75 ms
-Throughput: 654.02 ops/sec
-Throughput: 0.6387 GB/sec
+Min Latency: 0.23 ms
+Average Latency: 0.46 ms
+P90 Latency: 0.64 ms
+P95 Latency: 0.66 ms
+P99 Latency: 2.79 ms
+Throughput: 2175.91 ops/sec
+Throughput: 2.1249 GB/sec
 
 Deleting 50 objects of size 10485760 bytes
 
 Delete (Size: 10485760 bytes) Metrics:
-Min Latency: 1.35 ms
-Average Latency: 1.55 ms
-P90 Latency: 1.65 ms
-P95 Latency: 1.76 ms
-P99 Latency: 2.24 ms
-Throughput: 645.95 ops/sec
-Throughput: 6.3081 GB/sec
+Min Latency: 0.22 ms
+Average Latency: 0.28 ms
+P90 Latency: 0.30 ms
+P95 Latency: 0.32 ms
+P99 Latency: 0.32 ms
+Throughput: 3565.07 ops/sec
+Throughput: 34.8151 GB/sec
+Cleaning up bucket: test-bucket-1746321752500848501

@@ -14,6 +14,9 @@ import (
 )
 
 func main() {
+	fmt.Println("ACS Client SDK Benchmark - Test Suite 1")
+	fmt.Println("======================================")
+
 	// Initialize client
 	// Check if we can use a simpler constructor based on the package
 	client, err := client.NewClient(&client.Session{
