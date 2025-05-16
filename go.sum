@@ -1,5 +1,7 @@
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504001958-cd1c506bb6ec h1:2mTyrpuHDa8TXz3PX4Mr0vXzfOe96pQRfz3k1bIwNAU=
 github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504001958-cd1c506bb6ec/go.mod h1:W5CsgNLkynXXQj36sMOosZdRODKXWkuivLPVjeih/rI=
+github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504010251-e17fecd35066 h1:E3cn94SogfefgDRjWjsyaGhZ3N97Ph2rlu3jWDy89JM=
+github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504010251-e17fecd35066/go.mod h1:W5CsgNLkynXXQj36sMOosZdRODKXWkuivLPVjeih/rI=
 github.com/anthropics/anthropic-sdk-go v0.2.0-beta.3 h1:b5t1ZJMvV/l99y4jbz7kRFdUp3BSDkI8EhSlHczivtw=
 github.com/anthropics/anthropic-sdk-go v0.2.0-beta.3/go.mod h1:AapDW22irxK2PSumZiQXYUFvsdQgkwIWlpESweWZI/c=
 github.com/aws/aws-sdk-go-v2 v1.36.3 h1:mJoei2CxPutQVxaATCzDUjcZEjVRdpsiiXi2o38yqWM=
