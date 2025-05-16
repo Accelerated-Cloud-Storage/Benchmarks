@@ -1,104 +1,107 @@
+Creating bucket: test-bucket-1747367405000645054
+Starting write operations for varying object sizes...
+
 Writing 50 objects of size 1024 bytes
 
 Write (Size: 1024 bytes) Metrics:
-Min Latency: 268.76 ms
-Average Latency: 307.94 ms
-P90 Latency: 324.61 ms
-P95 Latency: 337.29 ms
-P99 Latency: 478.25 ms
-Throughput: 3.25 ops/sec
+Min Latency: 226.08 ms
+Average Latency: 303.07 ms
+P90 Latency: 311.89 ms
+P95 Latency: 340.35 ms
+P99 Latency: 390.04 ms
+Throughput: 3.30 ops/sec
 Throughput: 0.0000 GB/sec
 
 Writing 50 objects of size 1048576 bytes
 
 Write (Size: 1048576 bytes) Metrics:
-Min Latency: 288.32 ms
-Average Latency: 394.31 ms
-P90 Latency: 490.13 ms
-P95 Latency: 497.68 ms
-P99 Latency: 503.40 ms
-Throughput: 2.54 ops/sec
-Throughput: 0.0025 GB/sec
+Min Latency: 200.55 ms
+Average Latency: 301.97 ms
+P90 Latency: 311.53 ms
+P95 Latency: 383.28 ms
+P99 Latency: 405.05 ms
+Throughput: 3.31 ops/sec
+Throughput: 0.0032 GB/sec
 
 Writing 50 objects of size 10485760 bytes
 
 Write (Size: 10485760 bytes) Metrics:
-Min Latency: 489.20 ms
-Average Latency: 630.47 ms
-P90 Latency: 772.29 ms
-P95 Latency: 774.54 ms
-P99 Latency: 776.28 ms
-Throughput: 1.59 ops/sec
-Throughput: 0.0155 GB/sec
+Min Latency: 287.80 ms
+Average Latency: 376.78 ms
+P90 Latency: 387.42 ms
+P95 Latency: 391.74 ms
+P99 Latency: 424.17 ms
+Throughput: 2.65 ops/sec
+Throughput: 0.0259 GB/sec
 
 Starting read operations for varying object sizes...
 
 Reading 50 objects of size 1024 bytes
 
 Read (Size: 1024 bytes) Metrics:
-Min Latency: 67.61 ms
-Average Latency: 80.09 ms
-P90 Latency: 89.50 ms
-P95 Latency: 93.60 ms
-P99 Latency: 104.96 ms
-Throughput: 12.49 ops/sec
+Min Latency: 140.92 ms
+Average Latency: 200.91 ms
+P90 Latency: 224.55 ms
+P95 Latency: 244.65 ms
+P99 Latency: 300.29 ms
+Throughput: 4.98 ops/sec
 Throughput: 0.0000 GB/sec
 
 Reading 50 objects of size 1048576 bytes
 
 Read (Size: 1048576 bytes) Metrics:
-Min Latency: 85.73 ms
-Average Latency: 117.60 ms
-P90 Latency: 138.86 ms
-P95 Latency: 143.36 ms
-P99 Latency: 148.25 ms
-Throughput: 8.50 ops/sec
-Throughput: 0.0083 GB/sec
+Min Latency: 74.72 ms
+Average Latency: 185.77 ms
+P90 Latency: 224.42 ms
+P95 Latency: 231.74 ms
+P99 Latency: 242.45 ms
+Throughput: 5.38 ops/sec
+Throughput: 0.0053 GB/sec
 
 Reading 50 objects of size 10485760 bytes
 
 Read (Size: 10485760 bytes) Metrics:
-Min Latency: 178.94 ms
-Average Latency: 202.31 ms
-P90 Latency: 228.29 ms
-P95 Latency: 241.31 ms
-P99 Latency: 273.22 ms
-Throughput: 4.94 ops/sec
-Throughput: 0.0483 GB/sec
+Min Latency: 120.31 ms
+Average Latency: 206.98 ms
+P90 Latency: 312.83 ms
+P95 Latency: 325.31 ms
+P99 Latency: 370.83 ms
+Throughput: 4.83 ops/sec
+Throughput: 0.0472 GB/sec
 
 Starting delete operations...
 
 Deleting 50 objects of size 1024 bytes
 
 Delete (Size: 1024 bytes) Metrics:
-Min Latency: 142.43 ms
-Average Latency: 166.11 ms
-P90 Latency: 173.41 ms
-P95 Latency: 177.62 ms
-P99 Latency: 194.80 ms
-Throughput: 6.02 ops/sec
+Min Latency: 123.38 ms
+Average Latency: 137.58 ms
+P90 Latency: 144.30 ms
+P95 Latency: 145.80 ms
+P99 Latency: 150.68 ms
+Throughput: 7.27 ops/sec
 Throughput: 0.0000 GB/sec
 
 Deleting 50 objects of size 1048576 bytes
 
 Delete (Size: 1048576 bytes) Metrics:
-Min Latency: 154.97 ms
-Average Latency: 166.97 ms
-P90 Latency: 175.15 ms
-P95 Latency: 176.45 ms
-P99 Latency: 179.40 ms
-Throughput: 5.99 ops/sec
-Throughput: 0.0058 GB/sec
+Min Latency: 124.81 ms
+Average Latency: 137.04 ms
+P90 Latency: 144.79 ms
+P95 Latency: 145.95 ms
+P99 Latency: 152.45 ms
+Throughput: 7.30 ops/sec
+Throughput: 0.0071 GB/sec
 
 Deleting 50 objects of size 10485760 bytes
 
 Delete (Size: 10485760 bytes) Metrics:
-Min Latency: 156.04 ms
-Average Latency: 167.27 ms
-P90 Latency: 174.50 ms
-P95 Latency: 175.65 ms
-P99 Latency: 189.61 ms
-Throughput: 5.98 ops/sec
-Throughput: 0.0584 GB/sec
+Min Latency: 120.67 ms
+Average Latency: 135.80 ms
+P90 Latency: 142.70 ms
+P95 Latency: 144.04 ms
+P99 Latency: 150.24 ms
+Throughput: 7.36 ops/sec
+Throughput: 0.0719 GB/sec
 
-Cleaning up bucket: test-bucket-1747365541502912000
+Cleaning up bucket: test-bucket-1747367405000645054
