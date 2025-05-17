@@ -1,0 +1,116 @@
+(.venv) acceleratedcloudstorage_com@instance-20250514-014817:~/Benchmarks/gcs-client-test/python/test-2$ python gcs-sdk-2.py 
+Google Cloud Storage SDK Benchmark - Test Suite 2
+===============================================
+
+===== LARGE OBJECT TEST =====
+
+Creating bucket: large-object-test-1747367541566635262
+
+Generating 10.00GB of random data...
+
+Uploading large object using resumable upload...
+Upload completed successfully
+
+Large Object Upload (Resumable) Metrics:
+Min Latency: 61105.45 ms
+Average Latency: 61105.45 ms
+P90 Latency: 0.00 ms
+P95 Latency: 0.00 ms
+P99 Latency: 0.00 ms
+Throughput: 0.02 ops/sec
+Throughput: 0.163652 GB/sec
+
+Reading large object...
+
+Large Object Download Metrics:
+Min Latency: 61916.83 ms
+Average Latency: 61916.83 ms
+P90 Latency: 0.00 ms
+P95 Latency: 0.00 ms
+P99 Latency: 0.00 ms
+Throughput: 0.02 ops/sec
+Throughput: 0.161507 GB/sec
+
+Verifying data integrity...
+Data integrity verified successfully!
+
+Deleting large object...
+
+Large Object Deletion Metrics:
+Min Latency: 242.80 ms
+Average Latency: 242.80 ms
+P90 Latency: 0.00 ms
+P95 Latency: 0.00 ms
+P99 Latency: 0.00 ms
+Throughput: 4.12 ops/sec
+Throughput: 41.186243 GB/sec
+
+Cleaning up bucket: large-object-test-1747367541566635262
+
+===== LIST OPERATIONS TEST =====
+
+Creating 100 buckets...
+
+Bucket Creation Metrics:
+Min Latency: 755.60 ms
+Average Latency: 1369.52 ms
+P90 Latency: 2126.21 ms
+P95 Latency: 2831.45 ms
+P99 Latency: 5261.39 ms
+Throughput: 0.73 ops/sec
+
+Listing all buckets...
+
+Bucket Listing Metrics:
+Min Latency: 44.01 ms
+Average Latency: 61.50 ms
+P90 Latency: 92.36 ms
+P95 Latency: 104.90 ms
+P99 Latency: 114.93 ms
+Throughput: 16.26 ops/sec
+
+Deleting 100 buckets...
+
+Bucket Deletion Metrics:
+Min Latency: 399.70 ms
+Average Latency: 666.03 ms
+P90 Latency: 854.86 ms
+P95 Latency: 948.30 ms
+P99 Latency: 1020.09 ms
+Throughput: 1.50 ops/sec
+
+Creating bucket for object list test: object-list-test-1747367902072545599
+
+Creating 1000 objects of size 1 byte...
+
+Object Creation Metrics:
+Min Latency: 100.16 ms
+Average Latency: 129.59 ms
+P90 Latency: 137.87 ms
+P95 Latency: 141.09 ms
+P99 Latency: 159.57 ms
+Throughput: 7.72 ops/sec
+Throughput: 0.000000 GB/sec
+
+Listing all objects...
+
+Object Listing Metrics:
+Min Latency: 66.04 ms
+Average Latency: 85.81 ms
+P90 Latency: 92.42 ms
+P95 Latency: 93.82 ms
+P99 Latency: 94.94 ms
+Throughput: 11.65 ops/sec
+
+Deleting 1000 objects...
+
+Object Deletion Metrics:
+Min Latency: 118.94 ms
+Average Latency: 152.18 ms
+P90 Latency: 159.02 ms
+P95 Latency: 161.83 ms
+P99 Latency: 178.95 ms
+Throughput: 6.57 ops/sec
+Throughput: 0.000000 GB/sec
+
+Cleaning up bucket: object-list-test-1747367902072545599

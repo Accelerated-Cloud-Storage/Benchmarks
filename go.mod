@@ -3,7 +3,7 @@ module github.com/Accelerated-Cloud-Storage/Benchmarks
 go 1.24.0
 
 require (
-	github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504001958-cd1c506bb6ec
+	github.com/AcceleratedCloudStorage/acs-sdk-go v0.0.0-20250504010251-e17fecd35066
 	github.com/anthropics/anthropic-sdk-go v0.2.0-beta.3
 	github.com/aws/aws-sdk-go-v2 v1.36.3
 	github.com/aws/aws-sdk-go-v2/config v1.29.11
