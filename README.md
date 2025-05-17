@@ -30,7 +30,7 @@ This project requires the following SDKs and credentials:
 
 Please ensure you have configured the credentials for each service before running the benchmarks. Refer to the respective documentation for setup instructions:
 
-- [ACS Documentation](https://docs.acs.com)
+- [ACS Documentation](https://github.com/Accelerated-Cloud-Storage)
 - [AWS Documentation](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/setting-up.html)
 - [Google Cloud Documentation](https://cloud.google.com/storage/docs/reference/libraries)
 - [Tigris Documentation](https://www.tigrisdata.com/docs/)
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 ```
 
 The Python environment includes the following main packages:
-- ACS SDK (acs-sdk >= 0.3.2)
+- ACS SDK (acs-sdk >= 0.4.1)
 - AWS SDK (boto3)
 - Google Cloud Storage SDK
 - FUSE filesystem support
@@ -180,6 +180,6 @@ cd fuse-mount-test
 python benchmark.py YOUR-MOUNT-POINT
 ```
 
-The benchmark results will be saved in the `experimentResults/` directory.
+The benchmark results are available in the `experimentResults/` directory.
 
 **Note**: Make sure you have mounted the respective storage buckets as described in the mounting instructions before running the FUSE performance tests.
