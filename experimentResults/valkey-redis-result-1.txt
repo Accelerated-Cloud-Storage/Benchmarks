@@ -1,0 +1,85 @@
+[ec2-user@ip-10-0-1-117 redis-test]$ go run valkey.go 
+Starting string SET operations for varying data sizes...
+
+Performing 100 SET operations with 1024 bytes data
+
+String SET (Size: 1024 bytes) Metrics:
+Min Latency: 0.69 ms
+Average Latency: 1.34 ms
+P90 Latency: 1.55 ms
+P95 Latency: 1.78 ms
+P99 Latency: 10.01 ms
+Throughput: 745.94 ops/sec
+Throughput: 0.7285 MB/sec
+
+Performing 100 SET operations with 1048576 bytes data
+
+String SET (Size: 1048576 bytes) Metrics:
+Min Latency: 5.20 ms
+Average Latency: 6.72 ms
+P90 Latency: 7.41 ms
+P95 Latency: 7.86 ms
+P99 Latency: 8.72 ms
+Throughput: 148.72 ops/sec
+Throughput: 148.7247 MB/sec
+
+Performing 100 SET operations with 10485760 bytes data
+
+String SET (Size: 10485760 bytes) Metrics:
+Min Latency: 39.26 ms
+Average Latency: 49.53 ms
+P90 Latency: 52.60 ms
+P95 Latency: 53.46 ms
+P99 Latency: 54.93 ms
+Throughput: 20.19 ops/sec
+Throughput: 201.9171 MB/sec
+
+Starting string GET operations for varying data sizes...
+
+Performing 100 GET operations with 1024 bytes data
+
+String GET (Size: 1024 bytes) Metrics:
+Min Latency: 0.71 ms
+Average Latency: 1.07 ms
+P90 Latency: 1.51 ms
+P95 Latency: 1.58 ms
+P99 Latency: 3.03 ms
+Throughput: 934.93 ops/sec
+Throughput: 0.9130 MB/sec
+
+Performing 100 GET operations with 1048576 bytes data
+
+String GET (Size: 1048576 bytes) Metrics:
+Min Latency: 6.06 ms
+Average Latency: 69.05 ms
+P90 Latency: 158.03 ms
+P95 Latency: 177.41 ms
+P99 Latency: 203.38 ms
+Throughput: 14.48 ops/sec
+Throughput: 14.4818 MB/sec
+
+Performing 100 GET operations with 10485760 bytes data
+
+String GET (Size: 10485760 bytes) Metrics:
+Min Latency: 194.11 ms
+Average Latency: 729.41 ms
+P90 Latency: 1057.02 ms
+P95 Latency: 1124.89 ms
+P99 Latency: 1225.57 ms
+Throughput: 1.37 ops/sec
+Throughput: 13.7097 MB/sec
+
+Starting delete operations...
+
+Key DELETE Metrics:
+Min Latency: 0.66 ms
+Average Latency: 1.05 ms
+P90 Latency: 1.52 ms
+P95 Latency: 1.58 ms
+P99 Latency: 1.60 ms
+Throughput: 951.11 ops/sec
+Throughput: 0.9288 MB/sec
+
+Valkey benchmark completed successfully!
+Cleaning up test keys with prefix: test_1752630358605718523
+[ec2-user@ip-10-0-1-117 redis-test]$ 
