@@ -10,7 +10,7 @@ idna==3.10
 iniconfig==2.1.0
 jmespath==1.0.1
 pluggy==1.5.0
-protobuf==5.29.4
+protobuf==5.29.6
 python-dateutil==2.9.0.post0
 PyYAML==6.0.2
 requests==2.32.3
